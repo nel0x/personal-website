@@ -27,7 +27,7 @@ First and foremost I will be using Ubuntu 20.04 LTS Server for the docker setup.
 Most of the available images can be found at https://hub.docker.com.
 
 Helpfull through the setup will also be:
-- https://dbtechreviews.com/
+- https://dbtechreviews.com/blog/
 - https://www.the-digital-life.com/
 - https://docs.technotim.live/
 
@@ -56,7 +56,7 @@ $ sudo apt install docker.io docker-compose
 ## NGNIX Proxy Manager
 Eventually later on I will go with Caddy, or Traeffic or HAProxy. But for now let's start with NGNIX Proxy Manager. [official docs](https://nginxproxymanager.com/guide/#quick-setup)
 ```
-# mkdir /mnt/reverse-proxy/ && cd /mnt/reverse-proxy/ && vim docker-compose.yaml && docker-compose up -d
+# mkdir /mnt/reverse-proxy/ && cd /mnt/reverse-proxy/ && vim docker-compose.yml && docker-compose up -d
 ```
 ```yaml
 version: '3'
