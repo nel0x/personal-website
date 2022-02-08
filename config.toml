@@ -32,7 +32,7 @@ enableEmoji  = true
   enableThemeToggle = true
 
   # Metadata mostly used in document's head
-  description = "Hi, I'm Nicko Hristov!"
+  description = "Nicko's personal site"
   keywords = "homepage, blog"
   images = [""]
 
