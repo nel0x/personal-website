@@ -5,7 +5,7 @@ tags  = ['docker', 'homelab', 'tech']
 +++
 
 Thought I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox.
-This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel & emulated hardware and harder automatisation of the deployment process.
+This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel & emulated hardware and harder automation of the deployment process.
 
 That's why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.
 
