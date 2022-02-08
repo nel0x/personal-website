@@ -34,14 +34,6 @@ Vor allem im Bereich der Astronomie sollte man sich vor Augen halten, wie sehr u
 
 Die Menschen haben die Vorstellung, dass Astrophysiker, die außergewöhnliche Behauptungen über Planeten, Galaxien und Zeiträume aufstellen, die weit jenseits unserer menschlichen Vorstellungskraft liegen, auch außergewöhnliche Beweise dafür haben müssen. Das ist offen gesagt nicht der Fall. Wir haben ein stückweises und von der Jury zusammengestelltes Bündel von Indizien, die uns zu diesen Behauptungen führen. Wenn wir sie in einem wissenschaftlichen Dokumentarfilm in Farbe sehen, werden sie dadurch nicht realer. Es lässt sie nur offizieller aussehen.
 
-## Physik vs. "weiche Wissenschaften"
-
-Ich erinnere mich an ein Gespräch mit jemandem im Internet, der mir vorwarf, ich hätte eine schlechte Meinung von der institutionalisierten Wissenschaft und sei ein gefürchteter erkenntnistheoretischer Anarchist, weil einer meiner Abschlüsse in der "weichen Wissenschaft" der Linguistik liegt. Ich habe zwar viel Schlechtes über den gegenwärtigen Zustand der Linguistik zu sagen, aber als Fachgebiet ist sie wesentlich fortschrittlicher und ihre Erkenntnisse sind wesentlich solider als die Physik. Dabei macht die Formalisierung von Ideen in der Mathematik nicht einfach etwas zu einer besseren oder strengeren Wissenschaft, wie viele Leute annehmen.
-
-Während die Linguistik alle paar Generationen theoretische Änderungen erfährt, sind die Daten oder, was noch wichtiger ist, die Phänomenologie der Linguistik über alle theoretischen Rahmen hinweg so sicher wie immer. Das heißt, wir wissen, wie Sprache funktioniert. Wir können abstrakte Beziehungen zwischen Morphemen und syntaktischer Struktur erkennen. Selbst wenn wir unsere Erzählungen und Theorien über sprachliche Grundlagen völlig umschreiben, gibt es keine Debatte über die Struktur der Sprache und darüber, wie grundlegende Daten mit anderen Daten zusammenhängen. Dies ist das genaue Gegenteil der Physik.
-
-Auf der Erde ist die Physik ziemlich solide, und sie ist solide, wenn man Objekte in einem Vakuum gegeneinander laufen lässt, aber sobald wir das Gebiet der Astrophysik, der Relativitätstheorie, der Gravitation und mehr oder weniger alles andere betreten, wovon wir als Menschen keine direkte Intuition haben, sind die meisten "Fakten" der Physik theorieinterne Fakten, die mit der nächsten theoretischen Modeerscheinung verschwinden oder überholt werden.
-
 ## Meine Meinung zum wissenschaftlichen Arbeiten
 
 Ich denke, dass jeder ernsthafte Wissenschaftler die Fähigkeit haben muss, kognitiv mit mehreren verschiedenen theoretischen Rahmen im Kopf zu arbeiten.
