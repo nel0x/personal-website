@@ -36,7 +36,7 @@ As for programing languages I master Python & Shellscripting, web-development wi
 - and ... _Tech_ ;)
 
 ## Books
-One of my great passions is reading. I love it and actually spend most of the free time I have to myself with books. They're very quiet friends who have a lot to say.
+Another great passions is reading. I love it and actually spend most of the free time I have to myself with books. They're very quiet friends who have a lot to say.
 
 Therefore here is a curated list of my favorite works following. Maybe one or the other will find a nice new inspiration. 
 
