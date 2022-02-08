@@ -1,7 +1,7 @@
 +++
 title = "Guide to Starting your Own Website"
 date = "2021-07-07T19:00:00+01:00"
-tags  = ['website', 'homelab', 'internet']
+tags  = ['website', 'homelab', 'internet', 'tech']
 +++
 
 > **Work in progress** :construction_worker: :wrench:
