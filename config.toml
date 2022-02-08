@@ -3,6 +3,7 @@ title        = "Hi, I'm Nicko Hristov!"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 paginate     = 10
+rssLimit     = 5
 
 [author]
   name = "Nicko Hristov"
