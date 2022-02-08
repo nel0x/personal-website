@@ -10,7 +10,7 @@ Ich lehne den Begriff "harte gegen weiche Wissenschaften" aus Gründen ab, die b
 
 ## Warum "fragil"?
 
-![](/frangibility-physics.jpg)
+![](/posts/frangibility-physics.jpg)
 
 Vereinfacht gesagt, ist die Physik, teilweise aufgrund ihrer etwas abstrakten Natur, genau der Bereich, in dem sich unsere Interpretation des Universums im Falle einer theoretischen Veränderung am ehesten radikal ändern würde. Während in anderen, eher irdischen Wissenschaften die Daten bekannt sind und die Theorie zur Debatte steht, ist in der Physik wohl das Gegenteil der Fall. In der Astrophysik, der Quantenmechanik, der Erforschung der Schwerkraft oder der Relativitätstheorie sollte dies alles offensichtlich sein.
 
