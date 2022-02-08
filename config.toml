@@ -48,6 +48,7 @@ rssLimit     = 5
     logoMark     = "$"
     logoText = "cd ~"
     logoHomeLink = "/"
+    logoCursorColor =  "#379cff"
 
 [taxonomies]
     category = "categories"
