@@ -52,7 +52,8 @@ $ sudo apt install docker.io docker-compose
 ```
 -> **Go to** `https://<IP>:9443`
 
-# NGNIX Reverse Proxy Manager
+# Reverse Proxy
+## NGNIX Proxy Manager
 Eventually later on I will go with Caddy, or Traeffic or HAProxy. But for now let's start with NGNIX Proxy Manager. [official docs](https://nginxproxymanager.com/guide/#quick-setup)
 ```
 # mkdir /mnt/reverse-proxy/ && cd /mnt/reverse-proxy/ && vim docker-compose.yaml && docker-compose up -d
