@@ -28,15 +28,3 @@ Hugo makes use of a variety of open source projects including:
 1. https://privacytools.io/
 2. https://www.kuketz-blog.de
 3. https://privacy-handbuch.de/
-
-## Books
-One of my great passions is reading. I love it and actually spend most of the free time I have to myself with books. They're very quiet friends who have a lot to say.
-
-Therefore here is a curated list of my favorite works following. Maybe one or the other will find a nice new inspiration. 
-
-Title								|	Author			|	Publisher
--- 								|	--			| --
-The Clean Coder: A Code of Conduct for Professional Programmers |	Robert C. Martin	|	Prentince Hall
-Permanent Record						|	Edward Snowden		|	S.Fischer
-Extreme Privacy: What it takes to disappear			|	Michael Bazzel		|	Inteltechniques
-OSINT: Resources for searching and analyzing data		|	Michael Bazzel		|	Inteltechniques
