@@ -29,7 +29,7 @@ As for programing languages I master Python & Shellscripting, web-development wi
 - Dirty (code) documentation
 - Redundancy
 
-**Things outside tech**
+**Things outside tech:**
 - Boxing
 - Biking
 - Reading books
