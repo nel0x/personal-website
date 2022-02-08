@@ -4,6 +4,8 @@ date = "2021-07-07T19:00:00+01:00"
 tags  = ['website', 'homelab', 'internet']
 +++
 
+> **Work in progress** :construction_worker: :wrench:
+
 This is a site dedicated to turning internet peasants into Internet Landlords by showing them how to setup websites, email servers, chat servers and everything in between.
 
 Starting a website is something that can be done in a lazy afternoon and costs pocket change.
@@ -16,7 +18,7 @@ Most of the internet's problems could be solved if more people had their own per
 
 This is the basic "course." Follow these quick tutorials and you'll have a fully functioning basic web page on the domain name of your choice.
 
-⏳ This "basic course" can take as little *as an hour* or even less. 
+:hourglass: This "basic course" can take as little *as an hour* or even less. 
 
 1. [Get a domain name.](/own-website/basic/domain)
 2. [Get a server.](/own-website/basic/server)

@@ -3,7 +3,7 @@ title = "Moderne Freiheit"
 date  = "2022-02-07T19:00:00+01:00"
 tags  = ['philosophy', 'society', 'not-releated']
 +++
-![freedom](/freedom.jpg)
+![freedom](/posts//freedom.jpg)
 
 ## Was bedeutet Freiheit?
 
