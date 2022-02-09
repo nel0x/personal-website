@@ -262,23 +262,24 @@ pre {
     margin: 0;
     padding: 0;
     font-size: inherit;
+
     // Default
     color: #ccc;
 
     @media (prefers-color-scheme: dark) {
       color: inherit;
     }
-  
+
     @media (prefers-color-scheme: light) {
       color: #ccc;
     }
-  
+
     [data-theme=dark] & {
       color: inherit;
     }
-  
+
     [data-theme=light] & {
-      color: inherit;
+      color: #inherit;
     }
   }
 }
