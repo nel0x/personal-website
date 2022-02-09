@@ -11,6 +11,8 @@ That's why I finally got myself to migrating my infrastructure over as well as d
 
 I will document the whole procedure with all it's obstacles on this page, while starting with the basic and easy ones to warm up and then coming to more complex subjects, like storage sharing with Nextcloud and Syncthing.
 
+![](/posts/docker.png)
+
 ## Table of contents:
 - [Starting out with the basics](#basics)
 - [Reverse Proxy & Let's Encrypt certs](#reverse-proxy )
@@ -19,12 +21,11 @@ I will document the whole procedure with all it's obstacles on this page, while 
 - [UniFi Controller & other trivia (server-stuff.md)]()
 - [Media Server: Jellyfin & Sabnzbd]()
 - [Storage: Nextcloud & Syncthing]()
-- [Virtualize router with OPNSense]()
 - [Security: SingleSignOn, Authelia, Teleport]()
 
 # Basics
-First and foremost I will be using Ubuntu 20.04 LTS Server for the docker setup. In most cases - as we're doing containerization - this should not matter. Also note that Docker commands have always to be executed as _root_.
-Most of the available images can be found at https://hub.docker.com.
+First and foremost I will be using Ubuntu 20.04 LTS Server as my host system. But in most cases - as we'll be working inside the Docker environment - this should not matter. Also note that Docker commands have always to be executed with root privileges.
+A bunch of available images can be found at https://hub.docker.com.
 
 Helpfull through the setup will also be:
 - https://dbtechreviews.com/blog/
