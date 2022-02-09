@@ -4,7 +4,7 @@ date = "2022-02-08T16:00:00+01:00"
 tags  = ['docker', 'homelab', 'tech']
 +++
 
-Thought I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox.
+Though I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox.
 This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel & emulated hardware and harder automation of the deployment process.
 
 That's why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.
@@ -16,7 +16,7 @@ I will document the whole procedure with all it's obstacles on this page, while 
 ## Table of contents:
 - [Starting out with the basics](#basics)
 - [Reverse Proxy & Let's Encrypt certs](#reverse-proxy )
-- [Dashboard: Heimdall/Homer, etc.]()
+- [Dashboard: DashMachine](#dashboard)
 - [Documentation: Bookstack, Docusaurus, etc.]()
 - [UniFi Controller & other trivia (server-stuff.md)]()
 - [Media Server: Jellyfin & Sabnzbd]()
@@ -59,7 +59,7 @@ Eventually later on I will go with Caddy, or Traeffic or HAProxy. But for now le
 ```
 # mkdir /mnt/reverse-proxy/ && cd /mnt/reverse-proxy/ && vim docker-compose.yml && docker-compose up -d
 ```
-```yaml
+```
 version: '3'
 services:
   app:
@@ -76,7 +76,29 @@ services:
 -> **Go to** `http://<IP>:81` and create Proxy Hosts with config and SSL-certificates.
 
 # Dashboard
-DashMachine seems best suited for my case but a lot of other options are available on https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards
+Personally, I found DashMachine by far best suited for my use case but there are dozens of options available e.g. on https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards
 
-Till now haven't really discovered/created docker-compose file.
-See https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/
+https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/
+```
+# mkdir /mnt/dashmachine/ && cd /mnt/dashmachine/ && vim docker-compose.yml && docker-compose up -d
+```
+```
+---
+version: "3"
+services:
+  dashmachine:
+    image: rmountjoy/dashmachine:latest
+    container_name: dashmachine
+    volumes:
+      - ./config:/dashmachine/dashmachine/user_data
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+```
+-> **Go to** `http://<IP>:5000`
+For the config.ini [this is my setup](/unlisted/dashmachine-config).
+
+Looks amazing, right! :)
+
+![](/posts/dashmachine.png)
+
