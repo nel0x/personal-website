@@ -78,7 +78,7 @@ services:
 # Dashboard
 Personally, I found DashMachine by far best suited for my use case but there are dozens of options available e.g. on https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards
 
-https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/
+(https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/)
 ```
 # mkdir /mnt/dashmachine/ && cd /mnt/dashmachine/ && vim docker-compose.yml && docker-compose up -d
 ```
@@ -100,5 +100,5 @@ For the config.ini [this is my setup](/unlisted/dashmachine-config).
 
 Looks amazing, right! :)
 
-![](/posts/dashmachine.png)
+[![dashmachine](/posts/dashmachine.png)](/posts/dashmachine.png)
 
