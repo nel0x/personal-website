@@ -76,7 +76,7 @@ services:
 -> **Go to** `http://<IP>:81` and create Proxy Hosts with config and SSL-certificates.
 
 # Dashboard
-Personally, I found DashMachine by far best suited for my use case but there are dozens of options available e.g. on https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards
+Personally, I found _DashMachine_ by far best suited for my use case but there are dozens of options available e.g. on https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards
 
 (https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/)
 ```
@@ -96,7 +96,6 @@ services:
     restart: unless-stopped
 ```
 -> **Go to** `http://<IP>:5000`
-For the config.ini [this is my setup](/unlisted/dashmachine-config).
 
 Looks amazing, right! :)
 
