@@ -18,5 +18,6 @@ Disallow: /topics/
 Disallow: /own-website/
 Disallow: /sources/
 Disallow: /gdpr/
+Disallow: /admin-dashboard/
 Allow: /posts/
 Allow: /about/
