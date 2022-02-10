@@ -155,7 +155,7 @@ This is quite a niche project, but with the great goal to simplify the download 
 
 Of course, I don't encourage anyone to download pirated media of the web and I want to strongly emphasize the advantage of buying books in a regional store and thus supporting the authors, who hardly earn any money from selling books.
 
-Anyways, for the project itself (at least till now) it seems well maintained an got it's last only update five months ago. On their [Githup page](https://github.com/evan-buss/openbooks) you can find the official docker instructions but be sure to remove the `environment:`-section from the given docker-compose file (or eventually adapt the `/openbooks/` path to `./`; haven't tried this yet).
+Anyways, for the project itself (at least till now) it seems well maintained and got it's last update only five months ago. On their [Githup page](https://github.com/evan-buss/openbooks) you can find the official docker instructions but be sure to remove the `environment:`-section from the given docker-compose file (or eventually adapt the `/openbooks/` path to `./`; haven't tried this yet).
 ```
 # mkdir /mnt/openbooks/ && cd /mnt/openbooks/ && vim docker-compose.yml && docker-compose up -d
 ```
