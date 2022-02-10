@@ -48,11 +48,11 @@ enableEmoji  = true
     
   [[params.social]]
     name = "email"
-    url  = "/secure_redirect.php"
+    url  = "http://gpg.nickohristov.de"
 
   [[params.social]]
     name = "gpg"
-    url  = "https://keys.openpgp.org/search?q=mail@nickohristov.de"
+    url  = "http://gpg.nickohristov.de"
 
   [[params.social]]
     name = "matrix"
