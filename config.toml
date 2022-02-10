@@ -48,18 +48,19 @@ enableEmoji  = true
     
   [[params.social]]
     name = "email"
-    url  = "https://keys.openpgp.org/search?q=mail@nickohristov.de"
+    url  = "/secure_redirect.php"
+
   [[params.social]]
     name = "gpg"
     url  = "https://keys.openpgp.org/search?q=mail@nickohristov.de"
+
+  [[params.social]]
+    name = "matrix"
+    url  = "https://matrix.to/#/@quick.silver:matrix.org"
     
   [[params.social]]
     name = "gitlab"
     url  = "https://gitlab.com/nelox"
-    
-  [[params.social]]
-    name = "matrix"
-    url  = "https://matrix.to/#/@quick.silver:matrix.org"
 
   [params.logo]
     logoMark     = "$"
