@@ -95,7 +95,7 @@ services:
       - 5000:5000
     restart: unless-stopped
 ```
--> **Go to** `http://<IP>:5000`
+-> **Go to** `http://<IP>:5000` and start customizing your dashboard
 
 Looks amazing, right! :)
 
@@ -146,6 +146,7 @@ services:
     restart: unless-stopped
 ```
 How to migrate an old BookStack instance over is described [here](https://www.bookstackapp.com/docs/admin/backup-restore/), after getting into the container interactively by running `docker run -it --entrypoint /bin/bash <container_name>`.
+-> **Go to** `https://<IP>:6877`
 
 # Trivia, having a bit fun
 As the UniFi controller is not too urgent for me and i stumbled across some other interesting projects, let's try out a few ...
@@ -175,3 +176,5 @@ services:
 volumes:
     booksVolume:
 ```
+
+-> **Go to** `https://<IP>:8085` to access the WebUI
