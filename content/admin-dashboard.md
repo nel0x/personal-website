@@ -1,5 +1,3 @@
 +++
-title= "Admin Dashboard"
+title= "Nice try you Moron ;)"
 +++
-
-## Nice try ;)
