@@ -17,7 +17,7 @@ I will document the whole procedure with all it's obstacles on this page, while 
 - [Starting out with the basics](#basics)
 - [Reverse Proxy & Let's Encrypt certs](#reverse-proxy )
 - [Dashboard: DashMachine](#dashboard)
-- [Documentation: Bookstack, Docusaurus, etc.]()
+- [Documentation: Bookstack, Docusaurus, etc.](#documentation)
 - [UniFi Controller & other trivia (server-stuff.md)]()
 - [Media Server: Jellyfin & Sabnzbd]()
 - [Storage: Nextcloud & Syncthing]()
@@ -101,3 +101,77 @@ Looks amazing, right! :)
 
 [![dashmachine](/posts/dashmachine.png)](/posts/dashmachine.png)
 
+# Documentation
+## BookStack
+For that one I'm constantly hopping between multiple Markdown plattforms as well as some traditional documentation systems like MediaWiki. This time lets go with the multi-functional, easy-to-use platform [BookStack](https://github.com/linuxserver/docker-bookstack).
+```
+# mkdir /mnt/bookstack/ && cd /mnt/bookstack/ && vim docker-compose.yml && docker-compose up -d
+```
+```
+---
+version: "2"
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=
+      - DB_HOST=bookstack_db
+      - DB_USER=bookstack
+      - DB_PASS=<yourdbpass>
+      - DB_DATABASE=bookstack
+    volumes:
+      - ./config:/config
+    ports:
+      - 6875:80
+      - 6877:443
+    restart: unless-stopped
+    depends_on:
+      - bookstack_db
+  bookstack_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=<yourdbpass>
+      - TZ=Europe/Berlin
+      - MYSQL_DATABASE=bookstack
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=<mysqlrootpass>
+    volumes:
+      - ./dbconfig:/config
+    restart: unless-stopped
+```
+How to migrate an old BookStack instance over is described [here](https://www.bookstackapp.com/docs/admin/backup-restore/), after getting into the container interactively by running `docker run -it --entrypoint /bin/bash <container_name>`.
+
+# Trivia, having a bit fun
+As the UniFi controller is not too urgent for me and i stumbled across some other interesting projects, let's try out a few ...
+
+## OpenBooks
+This is quite a niche project, but with the great goal to simplify the download process of media - as it's name implies mainly for books - form the IRC Highway. As I'm a passionate reader and love discovering new books this seemed pretty appealing.
+
+Of course, I don't encourage anyone to download pirated media of the web and I want to strongly emphasize the advantage of buying books in a regional store and thus supporting the authors, who hardly earn any money from selling books.
+
+Anyways, for the project itself (at least till now) it seems well maintained an got it's last only update five months ago. On their [Githup page](https://github.com/evan-buss/openbooks) you can find the official docker instructions but be sure to remove the `environment:`-section from the given docker-compose file (or eventually adapt the `/openbooks/` path to `./`; haven't tried this yet).
+```
+# mkdir /mnt/openbooks/ && cd /mnt/openbooks/ && vim docker-compose.yml && docker-compose up -d
+```
+```
+version: '3.3'
+services:
+    openbooks:
+        ports:
+            - '8085:80'
+        volumes:
+            - './booksVolume:/books'
+        restart: unless-stopped
+        container_name: OpenBooks
+        command: --persist
+        image: evanbuss/openbooks:latest
+
+volumes:
+    booksVolume:
+```
