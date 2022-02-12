@@ -18,8 +18,8 @@ I will document the whole procedure with all it's obstacles on this page, while 
 - [Reverse Proxy & Let's Encrypt certs](#reverse-proxy )
 - [Dashboard: DashMachine](#dashboard)
 - [Documentation: Bookstack, Docusaurus, etc.](#documentation)
-- [UniFi Controller & other trivia (server-stuff.md)]()
-- [Media Server: Jellyfin & Sabnzbd]()
+- [OpenBooks & other trivia (server-stuff.md)]()
+- [Media Server: Jellyfin & Sabnzbd](#media-server)
 - [Storage: Nextcloud & Syncthing]()
 - [Security: SingleSignOn, Authelia, Teleport]()
 
@@ -178,3 +178,6 @@ volumes:
 ```
 
 -> **Go to** `https://<IP>:8085` to access the WebUI
+
+# Media Server
+## Jellyfin
