@@ -3,7 +3,7 @@
 class TextScramble {
     constructor(el) {
     this.el = el
-    this.chars = 'qazwsxedcrfvtgbyhnujmikolp1234567890`~!@#$%^&*()_+=-'
+    this.chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
     this.update = this.update.bind(this)
     }
     setText(newText) {
@@ -14,8 +14,8 @@ class TextScramble {
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || ''
       const to = newText[i] || ''
-      const start = Math.floor(Math.random() * 80)
-      const end = start + Math.floor(Math.random() * 80)
+      const start = Math.floor(Math.random() * 100)
+      const end = start + Math.floor(Math.random() * 100)
       this.queue.push({ from, to, start, end })
     }
     cancelAnimationFrame(this.frameRequest)
