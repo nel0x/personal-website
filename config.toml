@@ -66,6 +66,7 @@ enableEmoji  = true
     logoText = "cd ~"
     logoHomeLink = "/"
     logoCursorColor =  "#379cff"
+    logoCursorAnimate  = "1.1s"
 
 [taxonomies]
     category = "categories"
