@@ -4,7 +4,7 @@ date = "2022-03-10T16:00:00+01:00"
 tags  = ['network', 'smb', 'file-sharing', 'tech']
 +++
 
-Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 
 # Install and setup samba
 ```
