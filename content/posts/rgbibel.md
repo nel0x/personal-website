@@ -8,7 +8,7 @@ tags  = ['rgb', 'off-topic', 'cringe']
 1. Du sollst keine Apple Produkte kaufen.
 2. Mehr RGB, mehr FPS.
 3. Du sollst die RGB-Stripes ehren wie deine eigenen RGB-Lüfter.
-4. Gaming PC's werden immer selber gebaut.
+4. Gaming PCs werden immer selber gebaut.
 5. Du sollst dich deiner Rainbow-Tastatur gleichstellen.
 6. Du sollst die 16,7 Millionen Farben ehren und kennen.
 7. Du sollst die deinesgleichen stets mit einem LED-Band beschenken.
