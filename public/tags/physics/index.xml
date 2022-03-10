@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>physics on Hi, I&#39;m Nicko Hristov!</title>
+    <link>https://nickohristov.de/tags/physics/</link>
+    <description>Recent content in physics on Hi, I&#39;m Nicko Hristov!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 16 Dec 2021 19:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/physics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fragilität der Physik</title>
+      <link>https://nickohristov.de/posts/frangibility_of_physics/</link>
+      <pubDate>Thu, 16 Dec 2021 19:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/frangibility_of_physics/</guid>
+      <description>Die Physik hat den Ruf, ein einzigartig &amp;ldquo;wissenschaftliches&amp;rdquo; Fach zu sein. In anderen Bereichen hört man vielleicht vom &amp;ldquo;Neid auf die Physik&amp;rdquo;, der ein tief verwurzelter Wunsch von Akademikern anderer Disziplinen nach der Strenge und Eleganz der Physik sein soll. Nur die Physik, so die landläufige Meinung, ist wirklich in der Lage, von der Unordnung der Details zu abstrahieren und wirklich schöne und solvente Modelle ihres Gegenstandes zu schaffen. Die Physik ist somit die Königin der &amp;ldquo;harten Wissenschaften&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,744 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Hi, I&#39;m Nicko Hristov!</title>
+        <link>https://nickohristov.de/posts/</link>
+        <description>Recent content in Posts on Hi, I&#39;m Nicko Hristov!</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Thu, 10 Mar 2022 16:00:00 +0100</lastBuildDate>
+        <atom:link href="https://nickohristov.de/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Setup file sharing with SMB</title>
+            <link>https://nickohristov.de/posts/smb/</link>
+            <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/smb/</guid>
+            <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&amp;rsquo;t use it.</description>
+            <content type="html"><![CDATA[<p>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.</p>
+<h1 id="install-and-setup-samba">Install and setup samba</h1>
+<pre><code>$ sudo apt update &amp;&amp; sudo apt install samba
+</code></pre><p>For security disable Samba NetBIOS service, as we won&rsquo;t use it.</p>
+<pre><code>$ sudo systemctl disable --now nmbd.service
+</code></pre><p>To avoid security issues that can arise from running an unconfigured, network-enabled service, let’s stop the Samba server until configuration details are in place:</p>
+<pre><code>$ sudo systemctl stop smbd.service
+</code></pre><h1 id="configure-samba-global">Configure Samba global</h1>
+<pre><code>$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak &amp;&amp; sudo nano /etc/samba/smb.conf
+</code></pre><pre><code>[global]
+        server string = samba_server
+        server role = standalone server
+        bind interfaces only = yes
+        disable netbios = yes
+        smb ports = 445
+        log file = /var/log/samba/smb.log
+        max log size = 10000
+</code></pre><p>after editing <code>smb.conf</code> always run <code>testparm</code> to check that there are no syntax errors.
+If testparm reports <em>Loaded services file OK.</em>, then there are no syntax errors that would stop the Samba server from starting.</p>
+<h1 id="setup-samba-user--share">Setup Samba user &amp; share</h1>
+<h3 id="create-samba-root-directory">Create Samba root directory</h3>
+<pre><code>$ sudo mkdir /samba/
+$ sudo chown :sambashare /samba/
+</code></pre><h3 id="create-samba-user">Create Samba user</h3>
+<pre><code>$ sudo mkdir /samba/joe
+$ sudo adduser --home /samba/joe --no-create-home --shell /usr/sbin/nologin --ingroup sambashare joe
+
+$ sudo chown joe:sambashare /samba/joe/
+$ sudo chmod 2770 /samba/joe/
+
+$ sudo smbpasswd -a joe
+$ sudo smbpasswd -e joe
+</code></pre><h3 id="setup-share">Setup share</h3>
+<pre><code>[joe]
+        path = /samba/joe
+        browseable = no
+        read only = no
+        force create mode = 0660
+        force directory mode = 2770
+        valid users = joe
+</code></pre><pre><code>$ testparm &amp;&amp; sudo systemctl start smbd
+</code></pre><h1 id="configure-samba-clients">Configure Samba Clients</h1>
+<pre><code>$ sudo apt update &amp;&amp; sudo apt install smbclient cifs-utils
+</code></pre><p>Accessing Samba share temporarily:</p>
+<pre><code>$ smbclient //10.0.1.18/joe -U joe
+</code></pre><p>You can mount a samba share to a directory in your local Linux system using the mount and cifs type option.</p>
+<pre><code>$ mkdir /mnt/smb
+$ sudo mount -t cifs -o username=joe //10.0.1.18/joe /mnt/smb
+$ df -h
+</code></pre><h3 id="mount-samba-share-using-fstab">Mount Samba share using fstab.</h3>
+<p>You can use fstab file to persist Samba shares mounting through system reboots. In my example, I have the following line added to the end of <code>/ect/fstab</code> file.</p>
+<pre><code>//10.0.1.18/joe /mnt/smb cifs credentials=/.smbcreds 0 0
+</code></pre><pre><code>$ cat &lt;&lt; EOF &gt; /.smbcreds
+username=joe
+password=supersecretpassword
+domain=WORKGROUP
+EOF
+</code></pre><p>To test:</p>
+<pre><code>$ sudo mkdir -p /mnt/smb
+$ sudo mount -a
+$ df -hT | grep cifs
+</code></pre><h3 id="repos">Repos:</h3>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-samba-share-for-a-small-organization-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-a-samba-share-for-a-small-organization-on-ubuntu-16-04</a></li>
+<li><a href="https://computingforgeeks.com/install-and-configure-samba-server-share-on-ubuntu/">https://computingforgeeks.com/install-and-configure-samba-server-share-on-ubuntu/</a></li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>GnuPG Cheatsheet</title>
+            <link>https://nickohristov.de/posts/gpg/</link>
+            <pubDate>Fri, 04 Mar 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/gpg/</guid>
+            <description>That logo you have probably also noticed in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</description>
+            <content type="html"><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/de/thumb/6/6b/GnuPG.svg/300px-GnuPG.svg.png" alt=""></p>
+<p>That logo you have probably also noticed in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s <em>not end-to-end encrypted</em> and therefore completely unsecure.
+GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</p>
+<p>More about it:</p>
+<ul>
+<li><a href="https://www.gnupg.org/">https://www.gnupg.org/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">https://en.wikipedia.org/wiki/Public-key_cryptography</a></li>
+</ul>
+<p>This article goes over the usage of GPG in order to teach how to use GPG for encrypting/decrypting and sining/verifying mails and documents.</p>
+<h3 id="install-gnupg">Install GnuPG</h3>
+<pre><code>sudo pacman -Syu gnupg
+</code></pre><h3 id="configure-directory">Configure directory</h3>
+<pre><code>mkdir ~/.gnupg/
+sudo chown -R &quot;$(whoami):$(id -gn)&quot; ~/.gnupg/
+chmod -R 700 ~/.gnupg
+</code></pre><h3 id="configure-keyserver">Configure keyserver</h3>
+<h4 id="gnupg">GnuPG</h4>
+<pre><code>nano ~/.gnupg/gpg.conf
+</code></pre><pre><code>keyserver hkps://keys.openpgp.org
+</code></pre><h4 id="seahorse-workaround-since-adding-keys-doesnt-work">Seahorse (workaround; since adding keys doesn&rsquo;t work)</h4>
+<p>use dconf-editor: /desktop/gnome/crypto/pgp/keyservers &gt; custom value (see Default) &gt; <code>['hkps://keys.openpgp.org']</code></p>
+<h2 id="generate-key">Generate key</h2>
+<pre><code>cd ~/.gnupg
+gpg --full-gen-key
+</code></pre><pre><code># Please select what kind of key you want:
+1
+# What keysize do you want:
+4096
+Key is valid for:
+1y
+# Real name:
+Nicko Hristov
+# Email address:
+mail@nickohristov.de
+# Comment:
+</code></pre><h3 id="control-keys">Control keys</h3>
+<pre><code>gpg --list-keys
+gpg --list-secret-keys
+</code></pre><h2 id="configure-keys">Configure keys</h2>
+<h3 id="add-more-identities-to-the-key">Add more identities to the key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>adduid
+...
+trust
+5
+save
+</code></pre><h3 id="edit-keys">Edit keys</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>&gt; passwd       # change the passphrase
+&gt; clean        # compact any user ID that is no longer usable
+&gt; revkey       # revoke a key
+&gt; addkey       # add a subkey to this key
+&gt; expire       # change the key expiration time
+&gt; adduid       # add additional names, comments, and email addresses
+&gt; addphoto     # add photo to key
+&gt; help         # show all commands
+# save (after changes!)
+</code></pre><h2 id="revoke-keys">Revoke keys</h2>
+<h3 id="generate-revocation-certificate">Generate revocation certificate</h3>
+<pre><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
+chmod 700 ~/.gnupg/revocation_certificate.asc
+</code></pre><h3 id="merge-key-with-revocation-certificate">Merge key with revocation certificate</h3>
+<pre><code>gpg --import revocation_certificate.asc
+gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+</code></pre><h2 id="exporting-keys">Exporting keys</h2>
+<h3 id="export-key-to-keyserver">Export key to keyserver</h3>
+<pre><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+</code></pre><h3 id="export-public-key-as-ascii">Export public key as ASCII</h3>
+<pre><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
+</code></pre><h3 id="export-secret-key-as-ascii">Export secret key as ASCII</h3>
+<pre><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
+</code></pre><h2 id="import-keys">Import keys</h2>
+<h3 id="import-key">Import key</h3>
+<pre><code>gpg --import &lt;key-id&gt;
+</code></pre><h3 id="import-key-from-keyserver">Import key from keyserver</h3>
+<pre><code>gpg --search-keys &lt;user-id&gt;
+gpg --recv-keys &lt;key-id&gt;
+</code></pre><h3 id="refresh-local-keys">Refresh local keys</h3>
+<pre><code>gpg --refresh
+</code></pre><h2 id="verify-and-sign-keys">Verify and sign keys</h2>
+<h3 id="sign-key">Sign key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>sign
+...
+save
+</code></pre><h3 id="trust-key">Trust key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>trust
+1/2/3/4/5
+save
+</code></pre><h2 id="encrypt-and-decrypt-files-manually">Encrypt and decrypt files manually</h2>
+<h3 id="encrypt-file">Encrypt file</h3>
+<pre><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
+</code></pre><h3 id="decrypt-file">Decrypt file</h3>
+<pre><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>Flashing AOSP to Smartphones</title>
+            <link>https://nickohristov.de/posts/flashing_android_factory_image/</link>
+            <pubDate>Tue, 01 Mar 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/flashing_android_factory_image/</guid>
+            <description>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &amp;ldquo;stock Android&amp;rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays every single Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</description>
+            <content type="html"><![CDATA[<p>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &ldquo;stock Android&rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays <em>every single</em> Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</p>
+<p>Some privacy-friendly/secure android Custom ROMs:</p>
+<ul>
+<li><a href="https://e.foundation/">https://e.foundation/</a> (All in one solution)</li>
+<li><a href="https://iode.tech/en/">https://iode.tech/en/</a> (All in one solution)</li>
+<li><a href="https://grapheneos.org/">https://grapheneos.org/</a> (very securtity-focused)</li>
+<li><a href="https://calyxos.org/">https://calyxos.org/</a> (Trade-off between comfort and security)</li>
+<li><a href="https://lineageos.org/">https://lineageos.org/</a> (multi-functional AOSP-Base)</li>
+<li><a href="https://volla.online/de/">https://volla.online/de/</a> (VollaOS - beautiful but propriatary UI)</li>
+</ul>
+<p>Howerver, actually most smartphones lock the bootloader of their devices in some kind of way, so that it&rsquo;s either completely impossible to install Custom ROMs or that doing so e.g. breaks the bootloader partition and leaves some irreversible mark.
+So before trying to follow along this guide or even buying a new phone it&rsquo;s smart to make sure if the device supports such modifications.</p>
+<p>But if it does, like (very ironically) the Google &amp; OnePlus phones do, the following steps are required to unlock the bootloader, flash the android image and lock the bootloader again. This guide is written specificly for GrapheneOS and CalyxOS but should be roughly the way for flashing any android-based image; only slight changes may be required in the future, which always can be looked up at the corresponding projetct sites.</p>
+<h2 id="download-the-sdk-platform-tools">Download the SDK Platform tools</h2>
+<p><a href="https://developer.android.com/studio/releases/platform-tools">https://developer.android.com/studio/releases/platform-tools</a></p>
+<pre><code>$ curl -O https://dl.google.com/android/repository/platform-tools_r30.0.4-linux.zip
+$ echo '5be24ed897c7e061ba800bfa7b9ebb4b0f8958cc062f4b2202701e02f2725891  platform-tools_r30.0.4-linux.zip' | $ $ $ sha256sum -c
+$ unzip platform-tools_r30.0.4-linux.zip
+</code></pre><h2 id="download-the-official-android-image">Download the official android image</h2>
+<p><a href="https://developers.google.com/android/images">https://developers.google.com/android/images</a></p>
+<h2 id="unzip-both">Unzip both</h2>
+<pre><code>$ unzip *factory*.zip
+$ unzip platform-tools*.zip
+</code></pre><p>Then copy SDK-Tools Folder-content into Image folder and cd into the image folder.</p>
+<h2 id="correct-fastboot-path">Correct fastboot Path</h2>
+<pre><code>$ sudo nano flash-all.sh
+</code></pre><p>Remove if-query Change every &lsquo;fastboot&rsquo; to &lsquo;./fastboot&rsquo;</p>
+<h2 id="for-safety-remove-fastboot-distro-programm">(For safety) Remove fastboot Distro-Programm</h2>
+<pre><code>$ sudo pacman -R android-tools
+</code></pre><h2 id="then-on-the-phone">Then, on the phone:</h2>
+<ul>
+<li>Enable OEM Unlocking (in the Developer Settings)</li>
+<li>Plugin the device directly to the computer</li>
+<li>Reboot into fastboot-mode by <code>Vol- + Power</code></li>
+</ul>
+<h2 id="list-devices">List devices</h2>
+<pre><code>$ sudo ./fastboot devices
+</code></pre><h2 id="unlock-bootloader">Unlock bootloader</h2>
+<pre><code>$ sudo ./fastboot flashing unlock
+</code></pre><h2 id="flash-phone">Flash Phone</h2>
+<pre><code>$ sudo ./flash-all.sh
+</code></pre><h2 id="first-check-if-aosp-installed-correctly-without-yet-setting-it-up">First check if AOSP installed correctly (without yet setting it up!)</h2>
+<h2 id="then-lock-the-bootloader-again">Then lock the bootloader again</h2>
+<pre><code>$ sudo ./fastboot flashing lock
+</code></pre><h2 id="lastly-restart-setup-and-enjoy-your-new-os-">Lastly: Restart, setup and enjoy your new OS! :)</h2>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Dockerize Homelab</title>
+            <link>https://nickohristov.de/posts/dockerize/</link>
+            <pubDate>Tue, 08 Feb 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/dockerize/</guid>
+            <description>Though I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox. This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel &amp;amp; emulated hardware and harder automation of the deployment process.
+That&amp;rsquo;s why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.
+I will document the whole procedure with all it&amp;rsquo;s obstacles on this page, while starting with the basic and easy ones to warm up and then coming to more complex subjects, like storage sharing with Nextcloud and Syncthing.</description>
+            <content type="html"><![CDATA[<p>Though I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox.
+This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel &amp; emulated hardware and harder automation of the deployment process.</p>
+<p>That&rsquo;s why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.</p>
+<p>I will document the whole procedure with all it&rsquo;s obstacles on this page, while starting with the basic and easy ones to warm up and then coming to more complex subjects, like storage sharing with Nextcloud and Syncthing.</p>
+<p><img src="/posts/docker.png" alt=""></p>
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+<li><a href="#basics">Starting out with the basics</a></li>
+<li><a href="#portainer-ui">Portainer management UI</a></li>
+<li><a href="#reverse-proxy">Reverse Proxy &amp; Let&rsquo;s Encrypt certs</a></li>
+<li><a href="#dashboard">Dashboard: DashMachine</a></li>
+<li><a href="#documentation">Documentation: Bookstack, Docusaurus, etc.</a></li>
+<li><a href="">OpenBooks &amp; other trivia (server-stuff.md)</a></li>
+<li><a href="#media-server">Media Server: Jellyfin &amp; Sabnzbd</a></li>
+<li><a href="">Storage: Nextcloud &amp; Syncthing</a></li>
+<li><a href="">Security: SingleSignOn, Authelia, Teleport</a></li>
+</ul>
+<h1 id="basics">Basics</h1>
+<p>First and foremost I will be using Ubuntu 20.04 LTS Server as my host system. But in most cases - as we&rsquo;ll be working inside the Docker environment - this should not matter. Also note that Docker commands have always to be executed with root privileges.
+A bunch of available images can be found at <a href="https://hub.docker.com">https://hub.docker.com</a>.</p>
+<p>Helpfull through the setup will also be:</p>
+<ul>
+<li><a href="https://dbtechreviews.com/blog/">https://dbtechreviews.com/blog/</a></li>
+<li><a href="https://www.the-digital-life.com/">https://www.the-digital-life.com/</a></li>
+<li><a href="https://docs.technotim.live/">https://docs.technotim.live/</a></li>
+</ul>
+<ol>
+<li>Install Docker and Docker-compose</li>
+</ol>
+<pre><code>$ sudo apt install docker.io docker-compose
+</code></pre><ol start="2">
+<li>Portainer management UI Deployment
+<a href="https://docs.portainer.io/v/ce-2.11/start/install/server/docker/linux">official docs</a></li>
+</ol>
+<pre><code># docker volume create portainer_data
+</code></pre><pre><code># docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce:2.11.1
+</code></pre><p>-&gt; <strong>Go to</strong> <code>https://&lt;IP&gt;:9443</code></p>
+<h1 id="portainer-ui">Portainer UI</h1>
+<p>As much as I love the command line, Portainer is a great web interface for Docker, which also allows introducing systems and containerization concepts to less advanced linux sysadmins.
+Unfortunately (at least at the time of writing &hellip;) there are barely templates for a Portainer docker-compose file online, but at least it&rsquo;s not too hard to build it ourselves, as there are only a few lines of configuration needed.</p>
+<pre><code># mkdir /mnt/portainer/ &amp;&amp; cd /mnt/portainer/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre><code>version: &quot;3.5&quot;
+services:
+  jellyfin:
+    image: portainer/portainer-ce
+    container_name: portainer
+    ports:
+      - 8000:8000
+      - 9443:9443
+    network_mode: &quot;host&quot;
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer_data:/data
+    restart: unless-stopped
+</code></pre><h1 id="reverse-proxy">Reverse Proxy</h1>
+<h2 id="ngnix-proxy-manager">NGNIX Proxy Manager</h2>
+<p>Eventually later on I will go with Caddy, Traeffic or HAProxy. But for now let&rsquo;s start with NGNIX Proxy Manager. (-&gt; <a href="https://nginxproxymanager.com/guide/#quick-setup">official docs</a>)</p>
+<pre><code># mkdir /mnt/reverse-proxy/ &amp;&amp; cd /mnt/reverse-proxy/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre><code>version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+</code></pre><p>-&gt; <strong>Go to</strong> <code>http://&lt;IP&gt;:81</code> and create Proxy Hosts with config and SSL-certificates.</p>
+<h1 id="dashboard">Dashboard</h1>
+<p>Personally, I found <em>DashMachine</em> by far best suited for my use case but there are dozens of options available e.g. on <a href="https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards">https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards</a></p>
+<p>(<a href="https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/">https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/</a>)</p>
+<pre><code># mkdir /mnt/dashmachine/ &amp;&amp; cd /mnt/dashmachine/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre><code>---
+version: &quot;3&quot;
+services:
+  dashmachine:
+    image: rmountjoy/dashmachine
+    container_name: dashmachine
+    volumes:
+      - ./config:/dashmachine/dashmachine/user_data
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+</code></pre><p>-&gt; <strong>Go to</strong> <code>http://&lt;IP&gt;:5000</code> and start customizing your dashboard</p>
+<p>Looks amazing, right! :)</p>
+<p><a href="/posts/dashmachine.png"><img src="/posts/dashmachine.png" alt="dashmachine"></a></p>
+<h1 id="documentation">Documentation</h1>
+<h2 id="bookstack">BookStack</h2>
+<p>For that one I&rsquo;m constantly hopping between multiple Markdown plattforms as well as some traditional documentation systems like MediaWiki. This time lets go with the multi-functional, easy-to-use platform <a href="https://github.com/linuxserver/docker-bookstack">BookStack</a>.</p>
+<pre><code># mkdir /mnt/bookstack/ &amp;&amp; cd /mnt/bookstack/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre><code>---
+version: &quot;2&quot;
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=
+      - DB_HOST=bookstack_db
+      - DB_USER=bookstack
+      - DB_PASS=&lt;yourdbpass&gt;
+      - DB_DATABASE=bookstack
+    volumes:
+      - ./config:/config
+    ports:
+      - 6875:80
+      - 6877:443
+    restart: unless-stopped
+    depends_on:
+      - bookstack_db
+  bookstack_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=&lt;yourdbpass&gt;
+      - TZ=Europe/Berlin
+      - MYSQL_DATABASE=bookstack
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=&lt;mysqlrootpass&gt;
+    volumes:
+      - ./dbconfig:/config
+    restart: unless-stopped
+</code></pre><p>How to migrate an old BookStack instance over is described <a href="https://www.bookstackapp.com/docs/admin/backup-restore/">here</a>, after getting into the container interactively by running <code>docker run -it --entrypoint /bin/bash &lt;container_name&gt;</code>.
+-&gt; <strong>Go to</strong> <code>https://&lt;IP&gt;:6877</code></p>
+<h1 id="trivia-having-a-bit-fun">Trivia, having a bit fun</h1>
+<p>As the UniFi controller is not too urgent for me and I stumbled across some other interesting projects, let&rsquo;s try out a few &hellip;</p>
+<h2 id="openbooks">OpenBooks</h2>
+<p>This is quite a niche project, but with the great goal to simplify the download process of media - as it&rsquo;s name implies mainly for books - from the IRC Highway. As I&rsquo;m a passionate reader and love discovering new books, this seemed pretty appealing.</p>
+<p>Of course, I don&rsquo;t encourage anyone to download pirated media of the web and I want to strongly emphasize the advantage of buying books in a regional store and thus supporting the authors, who hardly earn any money from selling books.</p>
+<p>Anyways, for the project itself (at least till now) it seems well maintained and got it&rsquo;s last update only five months ago. On their <a href="https://github.com/evan-buss/openbooks">Githup page</a> you can find the official docker instructions but be sure to remove the <code>environment:</code>-section from the given docker-compose file (or eventually adapt the <code>/openbooks/</code> path to <code>./</code>; haven&rsquo;t tried this yet).</p>
+<pre><code># mkdir /mnt/openbooks/ &amp;&amp; cd /mnt/openbooks/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre><code>version: '3.3'
+services:
+    openbooks:
+        ports:
+            - '8085:80'
+        volumes:
+            - './booksVolume:/books'
+        restart: unless-stopped
+        container_name: OpenBooks
+        command: --persist
+        image: evanbuss/openbooks
+
+volumes:
+    booksVolume:
+</code></pre><p>-&gt; <strong>Go to</strong> <code>https://&lt;IP&gt;:8085</code> to access the WebUI</p>
+<h1 id="media-server">Media Server</h1>
+<h2 id="jellyfin">Jellyfin</h2>
+<p>There are loads of different media server solutions for organizing and streaming your media content. Ultimately Emby was my choice, but it comes with the price of not beeing open-source. As this is an absolute exclusion criterion for me, I therefore have to view it as pure garbage. Lukely there is a volunteer-built, privacy-friendly &amp; open-source fork of it, called <a href="https://jellyfin.org/">Jellyfin</a>.</p>
+<p>That&rsquo;s what I use for two years and I&rsquo;m happily fine with. So let&rsquo;s try to get it up and running in a docker container.</p>
+<pre><code>version: &quot;3.5&quot;
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - 8920:8920
+      - 8096:8096
+    network_mode: &quot;host&quot;
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media
+    restart: unless-stopped
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>Story time: What future could look like</title>
+            <link>https://nickohristov.de/posts/story_time_future/</link>
+            <pubDate>Sun, 06 Feb 2022 19:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/story_time_future/</guid>
+            <description>Hello, is this Pizzeria Palermo?
+  No, sir! This is Google pizzeria.
+  Oh, I must have dialed the wrong number?
+  No sir, Google bought the pizzeria.
+  Ah, okay! Then my order is&amp;hellip;
+  Sir, would you like to order the usual?
+  The usual? Do you know me?
+  According to our caller ID, you&amp;rsquo;ve ordered a medium crusted sausage pizza thirty times in the past.</description>
+            <content type="html"><![CDATA[<p><img src="/posts/google-spy.png" alt="google-spy-e"></p>
+<hr>
+<p>Hello, is this Pizzeria Palermo?</p>
+<hr>
+<blockquote>
+<p>No, sir! This is Google pizzeria.</p>
+</blockquote>
+<hr>
+<p>Oh, I must have dialed the wrong number?</p>
+<hr>
+<blockquote>
+<p>No sir, Google bought the pizzeria.</p>
+</blockquote>
+<hr>
+<p>Ah, okay! Then my order is&hellip;</p>
+<hr>
+<blockquote>
+<p>Sir, would you like to order the usual?</p>
+</blockquote>
+<hr>
+<p>The usual? Do you know me?</p>
+<hr>
+<blockquote>
+<p>According to our caller ID, you&rsquo;ve ordered a medium crusted sausage pizza thirty times in the past.</p>
+</blockquote>
+<hr>
+<p>Okay! <code>laughs</code> That&rsquo;ll do it!</p>
+<hr>
+<blockquote>
+<p>Would you like to try the ricotta and arugula with sun-dried tomatoes &hellip; ?</p>
+</blockquote>
+<hr>
+<p>No, I hate vegetables.</p>
+<hr>
+<blockquote>
+<p>That&rsquo;s probably why your cholesterol is so high &hellip;</p>
+</blockquote>
+<hr>
+<p>How do you know that?!</p>
+<hr>
+<blockquote>
+<p>From the participant handbook. There are your blood test results for the last 7 years.</p>
+</blockquote>
+<hr>
+<p>Okay, but I don&rsquo;t want this pizza! I have been taking medication for high cholesterol for a long time.</p>
+<hr>
+<blockquote>
+<p>You have not been taking your medications regularly. Two months ago you bought only one box of twentyfour pills at Mareschi Pharmacy.</p>
+</blockquote>
+<hr>
+<p>I bought more pills at another pharmacy.</p>
+<hr>
+<blockquote>
+<p>I can&rsquo;t find such transaction on your credit card.</p>
+</blockquote>
+<hr>
+<p>Because I paid in cash!</p>
+<hr>
+<blockquote>
+<p>Not possible. According to your bank statement, you didn&rsquo;t withdraw that much money &hellip;</p>
+</blockquote>
+<hr>
+<p>But I have another source of money.</p>
+<hr>
+<blockquote>
+<p>Then why is this not noted on your last tax return? Are you receiving income from an undeclared source?</p>
+</blockquote>
+<hr>
+<p>What questions are you asking me? Enough! I am fed up with Google, Facebook, Apple and Microsoft! I will go to an island where there is no internet, no cell phones and no one can spy on me.</p>
+<hr>
+<blockquote>
+<p>I understand you, sir, but in this case you need to renew your foreign passport because it has been expired for six months &hellip;</p>
+</blockquote>
+<hr>
+<p>beep &hellip; beep &hellip; beep &hellip; (hung up)</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Moderne Freiheit</title>
+            <link>https://nickohristov.de/posts/freedom_and_impulses/</link>
+            <pubDate>Tue, 18 Jan 2022 19:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/freedom_and_impulses/</guid>
+            <description>Was bedeutet Freiheit? Welche der beiden folgenden Personen ist freier:
+ Ein Drogensüchtiger. Ein Durchschnittsmensch, der nur deshalb nicht drogensüchtig ist, weil er in einem Land lebt, in dem Drogen so reguliert oder beschämt werden, dass sie schwer zu bekommen sind.  Die meisten modernen Menschen werden hier eine Art kognitive Dissonanz, eine Art Störung in ihrer Matrix haben. In der modernen Auffassung von Freiheit bedeutet Freiheit die Fähigkeit, zu tun, was man will, ohne dass die Regierung oder die Gesellschaft einem vorschreibt, was man zu tun hat, so dass (1), der Drogenabhängige, &amp;ldquo;freier&amp;rdquo; sein sollte.</description>
+            <content type="html"><![CDATA[<p><img src="/posts//freedom.jpg" alt="freedom"></p>
+<h2 id="was-bedeutet-freiheit">Was bedeutet Freiheit?</h2>
+<p>Welche der beiden folgenden Personen ist freier:</p>
+<ol>
+<li>Ein Drogensüchtiger.</li>
+<li>Ein Durchschnittsmensch, der nur deshalb nicht drogensüchtig ist, weil er in einem Land lebt, in dem Drogen so reguliert oder beschämt werden, dass sie schwer zu bekommen sind.</li>
+</ol>
+<p>Die meisten modernen Menschen werden hier eine Art kognitive Dissonanz, eine Art Störung in ihrer Matrix haben. In der modernen Auffassung von Freiheit bedeutet Freiheit die Fähigkeit, zu tun, was man will, ohne dass die Regierung oder die Gesellschaft einem vorschreibt, was man zu tun hat, so dass <strong>(1)</strong>, der Drogenabhängige, &ldquo;freier&rdquo; sein sollte.</p>
+<p>Aber gleichzeitig fühlt sich das falsch an. <strong>(2)</strong> lebt wahrscheinlich ein besseres Leben. Er ist eher in der Lage, mehr und bessere Entscheidungen zu treffen. Jemand, der drogenabhängig ist, ist in der Art des Lebens, das er führen muss, um seine Sucht zu erfüllen, stark eingeschränkt.</p>
+<p>Selbst extreme Libertäre werden wahrscheinlich sagen, dass <strong>(2)</strong> in einer besseren Lage ist, aber sie könnten die Dinge darauf schieben, dass <strong>(1)</strong> mehr Disziplin braucht, und sie werden sich irgendeine Geschichte ausdenken, warum eindeutig schlechte Drogen, intensive Pornografie oder gefährliche Dinge trotzdem erlaubt sein sollten.</p>
+<h2 id="klassische-freiheit">Klassische Freiheit</h2>
+<p>In Wirklichkeit haben wir seit der Aufklärung ein sehr eingeschränktes Verständnis davon, was &ldquo;Freiheit&rdquo; ist. Die aufklärerische &ldquo;Freiheit&rdquo; ist nur die Freiheit, den Launen der Triebe und Laster wahllos zu folgen.</p>
+<h3 id="die-christliche-tradition">Die christliche Tradition</h3>
+<p>Die Christen haben die klassische Auffassung von Freiheit sehr klar formuliert. Paulus schreibt, dass alle Menschen entweder &ldquo;Sklaven Christi&rdquo; oder &ldquo;Sklaven der Sünde&rdquo; sind. Der moderne Mensch möchte entgegnen, dass er nicht Sklave von irgendetwas sein will, sondern sein eigener Herr sein möchte, aber das gibt es in Wirklichkeit nicht.</p>
+<p>Man kann sich von Christus leiten lassen, oder allgemeiner gesagt, von konsequenten moralischen Grundsätzen, von Zurückhaltung und Voraussicht. Oder man kann den Anschein von Moral aufgeben und per Definition seinen Impulsen zu Unzucht, Drogenmissbrauch und einem allgemein rücksichtslosen Leben folgen.</p>
+<p>Auch diese Master sind nicht gleichwertig. Sklave des einen zu sein ist nicht dasselbe wie Sklave eines anderen zu sein. Sklaven der Sünde sind in inkohärentes und unkontrollierbares Verhalten verwickelt. Wenn man seinen sexuellen Launen folgt, kann das ein widersprüchliches und gedankenloses Verhalten sein, das man in einer Sekunde mag und in der nächsten angewidert ist. Es kann bedeuten, dass jemand vor Wut und Emotionen explodiert.</p>
+<p>Diese &ldquo;freie&rdquo; Person, ein Sklave der Sünde, ist nur durch die praktische Überlegung gebunden, dass er von &ldquo;Zimperlichen&rdquo; ertappt oder beschämt werden könnte, und das könnte seine Fähigkeit, seinen Trieben mehr zu folgen, dämpfen.</p>
+<h3 id="triebe-sind-nicht-der-mensch">Triebe sind nicht der Mensch</h3>
+<p>Wenn wir die moderne Welt so betrachten, als ob sie Wünsche und Ziele für uns hätte, dann scheint sie sicherlich zu versuchen, so viele Menschen wie möglich dazu zu bringen, Sklaven der Sünde zu sein. Die Menschen haben ihre Identität nicht mehr in dem, was sie eigentlich sind, sondern in zufälligen Vorlieben, die sich über Jahre der Impulssuche herausgebildet haben: ihre sexuellen Fetische, die Drogen ihrer Wahl, ihre Lieblingsfernsehsendung, die sie konsumieren, oder ihre Lieblingsmusik, die sie ständig in ihren Kopf pumpen, um die Möglichkeit zu dämpfen, dass ihnen ein origineller, reflektierender Gedanke kommen könnte.</p>
+<p>Mehr noch, diese Menschen können sich ein Leben ohne ihre Hauptsünden oft gar nicht vorstellen und reagieren wütend, wenn es jemand wagt, sie eines Besseren zu belehren oder sie zu verurteilen. Sie haben nicht nur eine Art Stockholm-Syndrom in Bezug auf die Sünde, sondern sie können auch nicht begreifen, dass die Menschen etwas Tieferes sind als ihre Vergnügungsgewohnheiten.</p>
+<h3 id="impulskontrolle-führt-zur-freiheit">Impulskontrolle führt zur Freiheit</h3>
+<p>Wenn man jedoch seine Impulse zügeln kann, ist man frei, sich wirklich hinzusetzen, zu überlegen und frei zu entscheiden, was das Beste ist.</p>
+<p>Hier beginnt die wahre Freiheit. Dem Säufer, dem Sklaven der Sünde, ist dieses Konzept völlig fremd, denn er kann sich nicht einmal den geistigen Raum leisten, um über seinen ständigen Dienst an der Sünde hinaus zu denken.</p>
+<p>Für ihn geht es nur darum, dass &ldquo;ich Spaß habe&rdquo;, und nicht um &ldquo;einige Hater, die gegen Spaß sind&rdquo;.</p>
+<h2 id="sklaven-der-laster-sind-sklaven-im-allgemeinen">Sklaven der Laster sind Sklaven im Allgemeinen</h2>
+<p>Wenn man sich mit seinen Impulsen identifiziert, ist es sehr leicht, sich dazu zu motivieren, sie mit derselben Impulsivität zu verteidigen, wenn man hört, dass sie &ldquo;angegriffen&rdquo; werden. Während impulsive Menschen als Einzelpersonen schwer zu ertragen sind, lassen sie sich als Gruppe leicht kontrollieren und wie unbedachte Schafe herumtreiben.</p>
+<p>Menschen, die in der Politik reaktiv sind, sind immer die Verlierer, und was ist ein impulsives Leben anderes als eines, das völlig reaktiv und daher kontrollierbar ist?</p>
+<h2 id="der-königliche-staat">Der königliche Staat</h2>
+<p>Nach dem klassischen Verständnis von Freiheit ist es das Ziel der gesellschaftlichen Normen, der traditionellen Moral und der guten Regierung, die wahre Freiheit zu vergrößern, indem die Versuchung zum Laster minimiert wird. Die Menschen werden mit einer gewissen Neigung zum Laster geboren (für Christen die Erbsünde), die leicht verschlimmert werden kann. Das Ziel einer normalen Gesellschaft ist es, die Menschen von Leidenschaft und impulsivem Verhalten wegzuführen. (Das ist jedoch eindeutig nicht das Ziel des modernen Westens.)</p>
+<p>Ein Drogensüchtiger ist nicht frei. Ein Teenager, der jeden Tag von der Schule nach Hause kommt, seine Tür schließt und sich Internetpornografie ansieht, ist nicht frei. Eine Person, die zwanghaft ihren Social-Media-Feed überprüft, wenn sie aufwacht oder sich ein wenig langweilt, ist nicht frei. Ein Junge, der bis spät in die Nacht aufbleibt, weil er an einem Videospiel &ldquo;grinden&rdquo; muss, ist nicht frei.</p>
+<p>Niemand kann sagen, dass diese Menschen das, was sie tun, wirklich wollen: Niemand stimmt einem impulsiven Verhalten vollständig zu. Das ist auch der Grund, warum in der katholischen Tradition die Sünden der Inkontinenz nicht so schwerwiegend sind wie die vorsätzlichen Sünden. Es ist kein faires Spiel.</p>
+<p>Wie auch immer, das Ziel der Kirche oder einer moralischen Gesellschaft und einer moralischen Regierung im Allgemeinen ist es, die Freiheit zu vergrößern, indem sie eine Gegenkraft zu den angeborenen Lastern darstellt.</p>
+<p>Der Sinn der moralischen Unterweisung besteht nicht darin, den Menschen einzuschränken, sondern ihn freier zu machen, indem die wahren Ursachen seiner Versklavung beseitigt werden: seine Laster, seine schlechten Gewohnheiten, seine Unersättlichkeit und Gier.</p>
+<ul>
+<li>Siehe auch: <a href="https://johndriggs.org/explore-thought/the-impulse-for-freedom/">https://johndriggs.org/explore-thought/the-impulse-for-freedom/</a></li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Fragilität der Physik</title>
+            <link>https://nickohristov.de/posts/frangibility_of_physics/</link>
+            <pubDate>Thu, 16 Dec 2021 19:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/frangibility_of_physics/</guid>
+            <description>Die Physik hat den Ruf, ein einzigartig &amp;ldquo;wissenschaftliches&amp;rdquo; Fach zu sein. In anderen Bereichen hört man vielleicht vom &amp;ldquo;Neid auf die Physik&amp;rdquo;, der ein tief verwurzelter Wunsch von Akademikern anderer Disziplinen nach der Strenge und Eleganz der Physik sein soll. Nur die Physik, so die landläufige Meinung, ist wirklich in der Lage, von der Unordnung der Details zu abstrahieren und wirklich schöne und solvente Modelle ihres Gegenstandes zu schaffen. Die Physik ist somit die Königin der &amp;ldquo;harten Wissenschaften&amp;rdquo;.</description>
+            <content type="html"><![CDATA[<p>Die Physik hat den Ruf, ein einzigartig &ldquo;wissenschaftliches&rdquo; Fach zu sein. In anderen Bereichen hört man vielleicht vom &ldquo;Neid auf die Physik&rdquo;, der ein tief verwurzelter Wunsch von Akademikern anderer Disziplinen nach der Strenge und Eleganz der Physik sein soll. Nur die Physik, so die landläufige Meinung, ist wirklich in der Lage, von der Unordnung der Details zu abstrahieren und wirklich schöne und solvente Modelle ihres Gegenstandes zu schaffen. Die Physik ist somit die Königin der &ldquo;harten Wissenschaften&rdquo;.</p>
+<p>Ich lehne den Begriff &ldquo;harte gegen weiche Wissenschaften&rdquo; aus Gründen ab, die bald klar sein werden, aber ich denke, es ist am wichtigsten, sich daran zu erinnern, dass <strong>die Physik trotz all ihrer Anmaßungen die anfälligste Wissenschaft ist</strong>. Das ist nicht unbedingt <em>schlecht</em>, aber es ist wahr.</p>
+<h2 id="warum-fragil">Warum &ldquo;fragil&rdquo;?</h2>
+<p><img src="/posts/frangibility-physics.jpg" alt=""></p>
+<p>Vereinfacht gesagt, ist die Physik, teilweise aufgrund ihrer etwas abstrakten Natur, genau der Bereich, in dem sich unsere Interpretation des Universums im Falle einer theoretischen Veränderung am ehesten radikal ändern würde. Während in anderen, eher irdischen Wissenschaften die Daten bekannt sind und die Theorie zur Debatte steht, ist in der Physik wohl das Gegenteil der Fall. In der Astrophysik, der Quantenmechanik, der Erforschung der Schwerkraft oder der Relativitätstheorie sollte dies alles offensichtlich sein.</p>
+<p>Auch ohne die kuschelige Umarmung der Mainstream-Physik zu verlassen, können wir dies klar erkennen. Was wird das endgültige Schicksal des Universums sein? Eine kontinuierliche Expansion des Universums bis zum Wärmetod? Vielleicht wird die Schwerkraft oder eine andere Kraft alles in einem Big Crunch zurückziehen? Die korrekte Alternative ist eine Aussage über sehr spezifische und tendenziöse Daten, die sich bei jeder Art von neuen Interpretationen dessen, was wir sehen, ziemlich stark verändern.</p>
+<p>Es lohnt sich, daran zu erinnern, dass während des größten Teils der Menschheitsgeschichte, einschließlich der anfänglichen Entwicklung dessen, was wir heute als Physik bezeichnen, der &ldquo;Normalzustand&rdquo; des Universums als der Zustand angenommen wurde, den wir auf der Erdoberfläche kennen: Alles fällt auf den Boden, und Dinge, die sich im Weltraum bewegen, werden langsamer, bis sie zum Stillstand kommen.</p>
+<p>Die moderne Physik betrachtet unser Leben auf der Erde jedoch als Ausnahme von der allgemeinen Regel der reibungslosen und kontinuierlichen Bewegung im Vakuum des Weltraums. Die Frage ist berechtigt: Wie viel von dem, was wir für normal halten, ist ein Sonderfall der Realität? Da wir auf immer mehr abnorme Daten stoßen, wie z. B. die Quantenmechanik, könnten wir uns bald dabei ertappen, dass wir scheinbar disparate Kräfte auf dieselbe Weise zu einem neuen Konzept vereinen, wie Newton auf neuartige und scheinbar absurde Weise die Tatsache, dass Gegenstände zu Boden fallen, mit der offensichtlichen Tatsache, dass die Erde die Sonne umkreist, zu einem neuen Konzept vereinte: Schwerkraft. Eine solche Vereinheitlichung macht alle unsere Universalien zu einem Spezialfall.</p>
+<h3 id="bewegt-sich-das-licht-wirklich-mit-lichtgeschwindigkeit">Bewegt sich das Licht wirklich mit Lichtgeschwindigkeit?</h3>
+<p>Die Physik ist zerbrechlich, denn sie ist wie ein Jenga-Spiel. Nimmt man ein Teil heraus oder verändert es, wird das Ganze entweder neu geordnet oder es bricht einfach zusammen.</p>
+<p>Nehmen wir zum Beispiel an, dass wir in einigen Jahren feststellen, dass die Lichtgeschwindigkeit aus irgendeinem bekannten oder unbekannten Grund nicht so universell funktioniert, wie wir angenommen haben. Nehmen wir an, dass es eine Art Wechselwirkung zwischen Licht und Schwerkraft gibt, so dass das Licht in einigen Teilen des Universums schneller ist. Der Grund dafür ist irrelevant. Oder nehmen wir an, dass wir lediglich herausfinden, dass es in der Vergangenheit ein systematisches Prinzip (ähnlich dem Heisenberg-Prinzip) gab, das alle unsere Messungen des Lichts verfälscht hat.</p>
+<p>Selbst wenn wir nur geringfügig falsch gemessen haben, wird das Jenga-Stück Licht alles radikal verändern: unsere Vorstellungen davon, wie alt das Universum ist, unsere Beziehungen zu anderen Planeten, die Gültigkeit der allgemeinen Relativitätstheorie, usw. Man könnte sagen, dass es eine &ldquo;Konkordanz der Beweise&rdquo; gibt, die unsere einzige bekannte Lichtgeschwindigkeit bestätigt, aber man könnte es auch so ausdrücken, dass wir viele andere Dinge mit unserer Interpretation des Lichts verknüpfen, die sich ändern müssen, wenn wir erkennen, dass unsere Modelle fehlerhaft sind.</p>
+<h3 id="armut-an-daten">Armut an Daten</h3>
+<p>Vor allem im Bereich der Astronomie sollte man sich vor Augen halten, wie sehr unsere Vorstellungen vom Weltraum auf Indizien beruhen. Manchmal sprechen wir über die Eigenschaften der Planeten anderer Sonnensysteme, als ob wir dort gewesen wären. In Wirklichkeit aber schätzen Astrophysiker die chemische Zusammensetzung fremder Planeten auf der Grundlage ihrer Lichtfrequenzen und anderer schwacher Daten. Jeder systematische Fehler in der Beobachtung über Tausende oder Millionen von Lichtjahren und wir haben die ganze Zeit Engel auf Stecknadelköpfen gezählt.</p>
+<p>Die Menschen haben die Vorstellung, dass Astrophysiker, die außergewöhnliche Behauptungen über Planeten, Galaxien und Zeiträume aufstellen, die weit jenseits unserer menschlichen Vorstellungskraft liegen, auch außergewöhnliche Beweise dafür haben müssen. Das ist offen gesagt nicht der Fall. Wir haben ein stückweises und von der Jury zusammengestelltes Bündel von Indizien, die uns zu diesen Behauptungen führen. Wenn wir sie in einem wissenschaftlichen Dokumentarfilm in Farbe sehen, werden sie dadurch nicht realer. Es lässt sie nur offizieller aussehen.</p>
+<h2 id="meine-meinung-zum-wissenschaftlichen-arbeiten">Meine Meinung zum wissenschaftlichen Arbeiten</h2>
+<p>Ich denke, dass jeder ernsthafte Wissenschaftler die Fähigkeit haben muss, kognitiv mit mehreren verschiedenen theoretischen Rahmen im Kopf zu arbeiten.</p>
+<p>So nehme ich zum Beispiel die Generative Grammatik (in der Linguistik) nicht sehr ernst, denn obwohl sie heutzutage zu den am besten finanzierten Dialekten der Linguistik gehört, ist sie ziemlich träge. Trotzdem halte ich es für sehr wichtig, dass ich sprachliche Probleme innerhalb der Generativen Grammatik und Worterklärungen innerhalb ihrer Ideen bearbeiten kann. Es ist schön, jemandem sagen zu können: &ldquo;Diese Alternation wird erklärt, wenn diese DP die Spezies der CP einnimmt.&rdquo; Ich glaube nicht daran, dass CPs oder Spezifizierer psychologisch real sind, aber ich kann die Sprache als kommunikativ erkennen.</p>
+<p>Ein guter theoretischer Rahmen ist einer, der Fakten und Beobachtungen hervorbringen kann, die auch außerhalb seines Rahmens erkannt und erklärt werden können.</p>
+<p>Das heißt, ein Rahmen sollte uns dazu anregen, völlig neue Beobachtungen und damit eine neue Phänomenologie zu finden. Dies steht im Widerspruch zu den egozentrischen Beweggründen vieler wissenschaftlicher Rahmen, deren Vertreter versuchen, sich gegen die &ldquo;Konkurrenz&rdquo; durchzusetzen. Bereiche, die die meiste Zeit damit verbringen, frühere Beobachtungen in ihrer eigenen theoretischen Sprache zu formalisieren, sind meist Zeitverschwendung (das ist, offen gesagt, die Generative Grammatik, auch wenn viele Menschen in GG aufgrund historischer Ignoranz nicht wissen, dass sie dabei auf der Stelle treten).</p>
+<p>Eines der größten Probleme der modernen institutionalisierten Nachkriegswissenschaft besteht darin, dass der Mechanismus der Finanzierung und Begutachtung sich selbst verstärkt: alle Bereiche konvergieren, um &ldquo;unipolar&rdquo; zu sein: nur eine Methodologie oder ein Rahmen wird als &ldquo;wissenschaftlich&rdquo; angesehen. Dadurch entsteht eine Gemeinschaft von &ldquo;Wissenschaftlern&rdquo;, die immer inzestuöser werden und im Allgemeinen nicht nur andere Untersuchungsmöglichkeiten nicht wahrnehmen, sondern sich nicht einmal ihrer eigenen Vorannahmen bewusst sein müssen.</p>
+<h2 id="die-scheuklappen-des-positivismus">Die Scheuklappen des Positivismus</h2>
+<p>Je mehr ich mit Physikern zu tun habe, desto mehr überrascht es mich, für wie irrelevant sie selbst die grundlegendsten theoretischen Erkenntnisse halten. Das ist für sie &ldquo;Philosophie&rdquo;. Es ist nicht ungewöhnlich, Sprüche wie diesen zu hören:</p>
+<ol>
+<li>&ldquo;In der Wissenschaft geht es nicht um die Wahrheit, sondern um die Erstellung von Modellen&rdquo;.</li>
+<li>&ldquo;In der Physik geht es darum, Gleichungen anzupassen.&rdquo;</li>
+<li>&ldquo;Wir machen keine Philosophie.&rdquo;</li>
+</ol>
+<p>Dinge wie diese werden gesagt, als ob es sich dabei um eine Art Aussage über eine universelle und wohlverstandene Wahrheit handelt, während es sich in Wirklichkeit um absurde Zen-Koans der positivistischen Religion handelt. Vor hundert Jahren war dies eine verrückte Meinung, und die Leute, die diese Dinge sagen, wissen heute, dass sie lächerlich sind. Sie sind einfach zum Erkennungsmerkmal des sozialen Clubs geworden.</p>
+<p>Ja, in der Wissenschaft geht es darum, Modelle zu schaffen  &hellip; Modelle, die die Realität, d. h. die Wahrheit, abbilden.</p>
+<p>Ein Wissenschaftler, der sich nicht mit Philosophie beschäftigt, ist kein Wissenschaftler: Er ist ein Ableser. Ein Philosoph, der sich nicht mit Wissenschaft beschäftigt, ist kein Philosoph, sondern ein Kiffer. Der Versuch, diese beiden Begriffe voneinander zu trennen, ist Teil des Problems.</p>
+<p>Physiker scheinen in diesem Punkt besonders empfindlich zu sein. Einerseits bestehen sie darauf, dass Philosophie &ldquo;nicht ihre Sache&rdquo; ist und &ldquo;nichts damit zu tun hat&rdquo;. Andererseits werden sie unglaublich wütend, wenn jemand es wagt, die Methodik der modernen Physik auf irgendeine Art und Weise philosophisch zu prüfen oder sich auch nur mit den philosophischen Verzweigungen ihrer Arbeit zu befassen.</p>
+<p>In Wirklichkeit haben die modernen Wissenschaftler und Positivisten ihre eigene Metaphysik, es ist nur eine implizite, die sie absichtlich oder unabsichtlich in ihre Theorien einfließen lassen. Sie können das nur tun, weil ihr plumper steriler &ldquo;Materialismus&rdquo; die Hintergrundstrahlung der modernen Welt ist.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Shellscript tear-off calendar</title>
+            <link>https://nickohristov.de/posts/shellscript-tearoff/</link>
+            <pubDate>Tue, 23 Nov 2021 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/shellscript-tearoff/</guid>
+            <description>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
+After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
+Now let&amp;rsquo;s get to the exciting part, to the script which actually perfoms the task:</description>
+            <content type="html"><![CDATA[<p>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.</p>
+<p>After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case <code>sayings.txt</code> and exchanging the website-saying, set in the <code>config.toml</code> under the <code>homeSubtitle</code> section.</p>
+<p>Now let&rsquo;s get to the exciting part, to the script which actually perfoms the task:</p>
+<pre><code>#!/usr/bin/env sh
+
+# define files
+sayingslist=./sayings.txt
+sayingsconfig=./config.toml
+
+# read new saying (randomly)
+newsaying=$(shuf -n 1 $sayingslist)
+
+# replace old with new saying
+sed -i &quot;s|homeSubtitle=\&quot;.*\&quot;$|homeSubtitle=\&quot;$newsaying\&quot;|&quot; $sayingsconfig
+
+### Sayings-sellection alternatively (in sequence) done trough:
+# read new saying (1st line)
+#newsaying=$(sed -n '1p' $sayingslist)
+# append new saying to end of list
+#echo &quot;$newsaying&quot; &gt;&gt; $sayingslist
+# remove new saying from 1st line
+#sed -i &quot;1d&quot; $sayingslist
+</code></pre><p>After that just executing the <code>tear-off.sh</code>-script does the work like a charm.</p>
+<p>If we now want this to happen automatically on a daily basis, we can automate the execution for example with inotify-tools to run it every day, week or month.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Guide to Starting your Own Website</title>
+            <link>https://nickohristov.de/posts/own-website/</link>
+            <pubDate>Wed, 07 Jul 2021 19:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/own-website/</guid>
+            <description>Work in progress 👷‍♂️ 🔧
+ This is a site dedicated to turning internet peasants into Internet Landlords by showing them how to setup websites, email servers, chat servers and everything in between.
+Starting a website is something that can be done in a lazy afternoon and costs pocket change.
+Most of the internet&amp;rsquo;s problems could be solved if more people had their own personal platforms, so the objective of this site is to guide any normal person through the process of installing a website.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p><strong>Work in progress</strong> 👷‍♂️ 🔧</p>
+</blockquote>
+<p>This is a site dedicated to turning internet peasants into Internet Landlords by showing them how to setup websites, email servers, chat servers and everything in between.</p>
+<p>Starting a website is something that can be done in a lazy afternoon and costs pocket change.</p>
+<p>Most of the internet&rsquo;s problems could be solved if more people had their own personal platforms, so the objective of this site is to guide any normal person through the process of installing a website.</p>
+<h1 id="all-courses">All courses</h1>
+<h3 id="basic-personal-website-setup">Basic Personal Website Setup</h3>
+<p>This is the basic &ldquo;course.&rdquo; Follow these quick tutorials and you&rsquo;ll have a fully functioning basic web page on the domain name of your choice.</p>
+<p>⌛ This &ldquo;basic course&rdquo; can take as little <em>as an hour</em> or even less.</p>
+<ol>
+<li><a href="/own-website/basic/domain">Get a domain name.</a></li>
+<li><a href="/own-website/basic/server">Get a server.</a></li>
+<li><a href="/own-website/basic/dns">Set up DNS settings to connect your server and domain name.</a></li>
+<li><a href="/own-website/basic/ngnix">Set up your web server.</a></li>
+<li><a href="/own-website/basic/certbot">Get a secure HTTPS connection with Certbot.</a></li>
+</ol>
+<h3 id="excellent-extras">Excellent Extras</h3>
+<ul>
+<li><a href="/own-website/extra/rsync">Rsync: Upload and Sync Files and Websites</a></li>
+<li><a href="/own-website/extra/maintenance">How to Maintain a Server.</a></li>
+<li><a href="/own-website/extra/sshkeys">Use your SSH keys to prevent hacking.</a></li>
+<li><a href="/own-website/extra/cron">Schedule tasks with Crontabs/Cronjobs.</a></li>
+<li><a href="/own-website/extra/tor">Mirror your site on Tor.</a></li>
+<li><a href="/own-website/extra/auth">Password-protecting Webpages (HTTP Authentication)</a></li>
+<li><a href="/own-website/extra/ufw">Using ufw as a firewall.</a></li>
+<li><a href="/own-website/extra/gemini">Create a Gemini Capsule.</a></li>
+<li><a href="/own-website/extra/standalone">Standalone Certbot Certificates </a></li>
+</ul>
+<h3 id="build-your-own-platform">&ldquo;Build your own platform!&rdquo;</h3>
+<ul>
+<li><a href="/own-website/platform/git">Host your own git repositories</a></li>
+<li><a href="/own-website/platform/pleroma">Pleroma, a federated Twitter-like Microblogging Site</a></li>
+<li><a href="/own-website/platform/nextcloud">Setting up a Nextcloud Instance (file hosting and more)</a></li>
+<li><a href="/own-website/platform/gitea">Setting up Gitea</a></li>
+<li><a href="/own-website/platform/irc">Creating your own chat server with IRC</a></li>
+<li><a href="/own-website/platform/rss-bridge">RSS Bridge: Create RSS Feeds for Mainstream Social Media</a></li>
+</ul>
+<h3 id="accepting-cryptocurrency-tips">Accepting Cryptocurrency Tips</h3>
+<ul>
+<li><a href="/own-website/crypto/crypto">The Case for Crypto for Normal People</a></li>
+<li><a href="/own-website/crypto/bitcoin">Accept btc logoBitcoin (BTC) donations</a></li>
+<li><a href="/own-website/crypto/monero">Accept xmr logoMonero (XMR) donations for superior privacy</a></li>
+<li><a href="/own-website/crypto/openalias">OpenAlias to make crypto easy</a></li>
+<li><a href="/own-website/crypto/bat">Basic Attention Token (BAT)</a></li>
+</ul>
+<h1 id="in-the-works">In the Works&hellip;</h1>
+<p>These articles are still under construction. Subscribe to my <a href="https://nickohristov.de/index.xml">RSS</a> feed for updates.</p>
+<h3 id="articles-and-tutorials-in-progress">Articles and Tutorials in Progress&hellip;</h3>
+<ul>
+<li>Full HTML tutorial</li>
+<li>Full CSS tutorial</li>
+<li>Setting up an Email server</li>
+<li>RSS feeds</li>
+<li>XMPP Prosody (federated chat)</li>
+<li>Matrix (federated chat)</li>
+<li>SearX (search engine)</li>
+</ul>
+<h3 id="on-the-look-out-for">On the look out for&hellip;</h3>
+<p>There are other articles not currently under construction which I would like to add. If you have experience with any of these, you may submit an article for review. Please include directions for Debian 10 as default. Abstain from using containerization (Docker, etc.). Attempt to follow the same settings as other articles here.</p>
+<ul>
+<li>Email webclients</li>
+<li>Simple static site generators</li>
+<li>Calibre (library server)</li>
+<li><a href="https://joinpeertube.org/">PeerTube</a> (like YouTube)</li>
+<li><a href="https://www.ejabberd.im/">XMPP ejabberd</a></li>
+<li><a href="https://movim.eu/">Movim for XMPP</a></li>
+</ul>
+<h1 id="support-this-content">Support this content</h1>
+<p>No ads, trackers or trash on this site. I am funded by doing good and earning gratitude. Express your gratitude in the following ways:</p>
+<ul>
+<li>Monero (coming soon)</li>
+<li>Bitocoin (coming soon)</li>
+</ul>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Hi, I&#39;m Nicko Hristov!</title>
+    <link>https://nickohristov.de/tags/</link>
+    <description>Recent content in Tags on Hi, I&#39;m Nicko Hristov!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 10 Mar 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>file-sharing</title>
+      <link>https://nickohristov.de/tags/file-sharing/</link>
+      <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/tags/file-sharing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://nickohristov.de/tags/network/</link>
+      <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>smb</title>
+      <link>https://nickohristov.de/tags/smb/</link>
+      <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/tags/smb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tech</title>
+      <link>https://nickohristov.de/tags/tech/</link>
+      <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>email</title>
+      <link>https://nickohristov.de/tags/email/</link>
+      <pubDate>Fri, 04 Mar 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/tags/email/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

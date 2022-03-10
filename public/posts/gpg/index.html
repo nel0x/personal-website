@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Nicko Hristov ">
+<meta name="description" content="That logo you have probably also noticed in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity." />
+<meta name="keywords" content="homepage, blog, GnuPG, encryption, email, tech" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nickohristov.de/posts/gpg/" />
+
+
+    <title>
+        
+            GnuPG Cheatsheet :: Hi, I&#39;m Nicko Hristov!  — A student by day, a coder by night.
+        
+    </title>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/main.c47edf39e235b482df2ff83840628fb6b276216c064604f24f8a226699cb571e.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="GnuPG Cheatsheet">
+<meta itemprop="description" content="That logo you have probably also noticed in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.">
+<meta itemprop="datePublished" content="2022-03-04T16:00:00+01:00" />
+<meta itemprop="dateModified" content="2022-03-04T16:00:00+01:00" />
+<meta itemprop="wordCount" content="401">
+<meta itemprop="image" content="https://nickohristov.de"/>
+
+
+
+<meta itemprop="keywords" content="GnuPG,encryption,email,tech," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nickohristov.de"/>
+
+<meta name="twitter:title" content="GnuPG Cheatsheet"/>
+<meta name="twitter:description" content="That logo you have probably also noticed in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-03-04 16:00:00 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text">cd ~</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#379cff;
+                   animation-duration:1.1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts">Posts</a></li><li><a href="/about">About</a></li><li><a href="/sources">Sources</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://nickohristov.de/posts/gpg/">GnuPG Cheatsheet</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p><img src="https://upload.wikimedia.org/wikipedia/de/thumb/6/6b/GnuPG.svg/300px-GnuPG.svg.png" alt=""></p>
+<p>That logo you have probably also noticed in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s <em>not end-to-end encrypted</em> and therefore completely unsecure.
+GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</p>
+<p>More about it:</p>
+<ul>
+<li><a href="https://www.gnupg.org/">https://www.gnupg.org/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">https://en.wikipedia.org/wiki/Public-key_cryptography</a></li>
+</ul>
+<p>This article goes over the usage of GPG in order to teach how to use GPG for encrypting/decrypting and sining/verifying mails and documents.</p>
+<h3 id="install-gnupg">Install GnuPG</h3>
+<pre><code>sudo pacman -Syu gnupg
+</code></pre><h3 id="configure-directory">Configure directory</h3>
+<pre><code>mkdir ~/.gnupg/
+sudo chown -R &quot;$(whoami):$(id -gn)&quot; ~/.gnupg/
+chmod -R 700 ~/.gnupg
+</code></pre><h3 id="configure-keyserver">Configure keyserver</h3>
+<h4 id="gnupg">GnuPG</h4>
+<pre><code>nano ~/.gnupg/gpg.conf
+</code></pre><pre><code>keyserver hkps://keys.openpgp.org
+</code></pre><h4 id="seahorse-workaround-since-adding-keys-doesnt-work">Seahorse (workaround; since adding keys doesn&rsquo;t work)</h4>
+<p>use dconf-editor: /desktop/gnome/crypto/pgp/keyservers &gt; custom value (see Default) &gt; <code>['hkps://keys.openpgp.org']</code></p>
+<h2 id="generate-key">Generate key</h2>
+<pre><code>cd ~/.gnupg
+gpg --full-gen-key
+</code></pre><pre><code># Please select what kind of key you want:
+1
+# What keysize do you want:
+4096
+Key is valid for:
+1y
+# Real name:
+Nicko Hristov
+# Email address:
+mail@nickohristov.de
+# Comment:
+</code></pre><h3 id="control-keys">Control keys</h3>
+<pre><code>gpg --list-keys
+gpg --list-secret-keys
+</code></pre><h2 id="configure-keys">Configure keys</h2>
+<h3 id="add-more-identities-to-the-key">Add more identities to the key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>adduid
+...
+trust
+5
+save
+</code></pre><h3 id="edit-keys">Edit keys</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>&gt; passwd       # change the passphrase
+&gt; clean        # compact any user ID that is no longer usable
+&gt; revkey       # revoke a key
+&gt; addkey       # add a subkey to this key
+&gt; expire       # change the key expiration time
+&gt; adduid       # add additional names, comments, and email addresses
+&gt; addphoto     # add photo to key
+&gt; help         # show all commands
+# save (after changes!)
+</code></pre><h2 id="revoke-keys">Revoke keys</h2>
+<h3 id="generate-revocation-certificate">Generate revocation certificate</h3>
+<pre><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
+chmod 700 ~/.gnupg/revocation_certificate.asc
+</code></pre><h3 id="merge-key-with-revocation-certificate">Merge key with revocation certificate</h3>
+<pre><code>gpg --import revocation_certificate.asc
+gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+</code></pre><h2 id="exporting-keys">Exporting keys</h2>
+<h3 id="export-key-to-keyserver">Export key to keyserver</h3>
+<pre><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+</code></pre><h3 id="export-public-key-as-ascii">Export public key as ASCII</h3>
+<pre><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
+</code></pre><h3 id="export-secret-key-as-ascii">Export secret key as ASCII</h3>
+<pre><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
+</code></pre><h2 id="import-keys">Import keys</h2>
+<h3 id="import-key">Import key</h3>
+<pre><code>gpg --import &lt;key-id&gt;
+</code></pre><h3 id="import-key-from-keyserver">Import key from keyserver</h3>
+<pre><code>gpg --search-keys &lt;user-id&gt;
+gpg --recv-keys &lt;key-id&gt;
+</code></pre><h3 id="refresh-local-keys">Refresh local keys</h3>
+<pre><code>gpg --refresh
+</code></pre><h2 id="verify-and-sign-keys">Verify and sign keys</h2>
+<h3 id="sign-key">Sign key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>sign
+...
+save
+</code></pre><h3 id="trust-key">Trust key</h3>
+<pre><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre><code>trust
+1/2/3/4/5
+save
+</code></pre><h2 id="encrypt-and-decrypt-files-manually">Encrypt and decrypt files manually</h2>
+<h3 id="encrypt-file">Encrypt file</h3>
+<pre><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
+</code></pre><h3 id="decrypt-file">Decrypt file</h3>
+<pre><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
+</code></pre>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://nickohristov.de/tags/gnupg/">GnuPG</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/encryption/">encryption</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/email/">email</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/tech/">tech</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        401 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2022-03-04 16:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://nickohristov.de/posts/smb/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Setup file sharing with SMB</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://nickohristov.de/posts/flashing_android_factory_image/">
+                    <span class="button__text">Flashing AOSP to Smartphones</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&#127279; 2022</span>
+            <span><a href="/gdpr/">GDPR<a></a></span>
+            
+            
+            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span><span class="text"></span></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.9006e041d9582fdc8c78662743d9ecdef878a052a5dcf9827796500c64d12dc4dff09f1a1c8d707135c3065d9114e8f86842f4837e5efd424833f11b9e11fc94.js" integrity="sha512-kAbgQdlYL9yMeGYnQ9ns3vh4oFKl3PmCd5ZQDGTRLcTf8J8aHI1wcTXDBl2RFOj4aEL0g35e/UJIM/EbnhH8lA=="></script>
+
+
+
+    </body>
+</html>
