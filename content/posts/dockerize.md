@@ -15,6 +15,7 @@ I will document the whole procedure with all it's obstacles on this page, while 
 
 ## Table of contents:
 - [Starting out with the basics](#basics)
+- [Portainer management UI](#portainer-ui)
 - [Reverse Proxy & Let's Encrypt certs](#reverse-proxy )
 - [Dashboard: DashMachine](#dashboard)
 - [Documentation: Bookstack, Docusaurus, etc.](#documentation)
@@ -53,9 +54,31 @@ $ sudo apt install docker.io docker-compose
 ```
 -> **Go to** `https://<IP>:9443`
 
+# Portainer UI
+As much as I love the command line, Portainer is a great web interface for Docker, which also allows introducing systems and containerization concepts to less advanced linux sysadmins.
+Unfortunately (at least at the time of writing ...) there are barely templates for a Portainer docker-compose file online, but at least it's not too hard to build it ourselves, as there are only a few lines of configuration needed.
+```
+# mkdir /mnt/portainer/ && cd /mnt/portainer/ && vim docker-compose.yml && docker-compose up -d
+```
+```
+version: "3.5"
+services:
+  jellyfin:
+    image: portainer/portainer-ce
+    container_name: portainer
+    ports:
+      - 8000:8000
+      - 9443:9443
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer_data:/data
+    restart: unless-stopped
+```
+
 # Reverse Proxy
 ## NGNIX Proxy Manager
-Eventually later on I will go with Caddy, or Traeffic or HAProxy. But for now let's start with NGNIX Proxy Manager. [official docs](https://nginxproxymanager.com/guide/#quick-setup)
+Eventually later on I will go with Caddy, Traeffic or HAProxy. But for now let's start with NGNIX Proxy Manager. (-> [official docs](https://nginxproxymanager.com/guide/#quick-setup))
 ```
 # mkdir /mnt/reverse-proxy/ && cd /mnt/reverse-proxy/ && vim docker-compose.yml && docker-compose up -d
 ```
@@ -63,7 +86,7 @@ Eventually later on I will go with Caddy, or Traeffic or HAProxy. But for now le
 version: '3'
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: 'jc21/nginx-proxy-manager'
     restart: unless-stopped
     ports:
       - '80:80'
@@ -87,7 +110,7 @@ Personally, I found _DashMachine_ by far best suited for my use case but there a
 version: "3"
 services:
   dashmachine:
-    image: rmountjoy/dashmachine:latest
+    image: rmountjoy/dashmachine
     container_name: dashmachine
     volumes:
       - ./config:/dashmachine/dashmachine/user_data
@@ -149,10 +172,10 @@ How to migrate an old BookStack instance over is described [here](https://www.bo
 -> **Go to** `https://<IP>:6877`
 
 # Trivia, having a bit fun
-As the UniFi controller is not too urgent for me and i stumbled across some other interesting projects, let's try out a few ...
+As the UniFi controller is not too urgent for me and I stumbled across some other interesting projects, let's try out a few ...
 
 ## OpenBooks
-This is quite a niche project, but with the great goal to simplify the download process of media - as it's name implies mainly for books - form the IRC Highway. As I'm a passionate reader and love discovering new books this seemed pretty appealing.
+This is quite a niche project, but with the great goal to simplify the download process of media - as it's name implies mainly for books - from the IRC Highway. As I'm a passionate reader and love discovering new books, this seemed pretty appealing.
 
 Of course, I don't encourage anyone to download pirated media of the web and I want to strongly emphasize the advantage of buying books in a regional store and thus supporting the authors, who hardly earn any money from selling books.
 
@@ -171,7 +194,7 @@ services:
         restart: unless-stopped
         container_name: OpenBooks
         command: --persist
-        image: evanbuss/openbooks:latest
+        image: evanbuss/openbooks
 
 volumes:
     booksVolume:
@@ -181,3 +204,26 @@ volumes:
 
 # Media Server
 ## Jellyfin
+
+There are loads of different media server solutions for organizing and streaming your media content. Ultimately Emby was my choice, but it comes with the price of not beeing open-source. As this is an absolute exclusion criterion for me, I therefore have to view it as pure garbage. Lukely there is a volunteer-built, privacy-friendly & open-source fork of it, called [Jellyfin](https://jellyfin.org/).
+
+That's what I use for two years and I'm happily fine with. So let's try to get it up and running in a docker container.
+
+```
+version: "3.5"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - 8920:8920
+      - 8096:8096
+    network_mode: "host"
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media
+    restart: unless-stopped
+```
