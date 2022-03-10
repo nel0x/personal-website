@@ -1,6 +1,6 @@
 +++
 title = "Flashing AOSP to Smartphones"
-date = "2022-03-01T16:00:00+01:00"
+date = "2022-02-23T16:00:00+01:00"
 tags  = ['android', 'customROM', 'smartphone']
 +++
 
