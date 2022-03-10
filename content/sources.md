@@ -23,8 +23,9 @@ Hugo makes use of a variety of open source projects including:
 3. Animation by [Lottie](https://lottiefiles.com/)
 4. Inspiration by [Fikriazh](https://github.com/fikriazh)
 
-## Knowledge
+## Some important places for knowledge
 
-1. https://privacytools.io/
-2. https://www.kuketz-blog.de
-3. https://privacy-handbuch.de/
+1. https://privacytools.io
+2. https://ssd.eff.org
+3. https://www.kuketz-blog.de
+4. https://privacy-handbuch.de
