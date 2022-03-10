@@ -4,6 +4,10 @@ date = "2022-03-01T16:00:00+01:00"
 tags  = ['android', 'customROM', 'smartphone']
 +++
 
+{{< rawhtml >}}
+    <img src="/posts/Android_logo.png" alt="Android logo" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
+{{< /rawhtml >}}
+
 Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for "stock Android" or more precisely the AOSP (Android Open Source Platform) and nowadays _every single_ Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.
 
 Some privacy-friendly/secure android Custom ROMs:
