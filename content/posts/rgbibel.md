@@ -6,7 +6,7 @@ tags  = ['rgb', 'off-topic', 'cringe']
 
 ## RGBote
 1. Du sollst keine Apple Produkte kaufen.
-2. Mehr RGB, mehr FPS
+2. Mehr RGB, mehr FPS.
 3. Du sollst die RGB-Stripes ehren wie deine eigenen RGB-Lüfter.
 4. Gaming PC's werden immer selber gebaut.
 5. Du sollst dich deiner Rainbow-Tastatur gleichstellen.
