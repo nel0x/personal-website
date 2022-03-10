@@ -92,9 +92,9 @@ $ df -hT | grep cifs
             <pubDate>Fri, 04 Mar 2022 16:00:00 +0100</pubDate>
             
             <guid>https://nickohristov.de/posts/gpg/</guid>
-            <description>That logo you have probably also noticed in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</description>
-            <content type="html"><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/de/thumb/6/6b/GnuPG.svg/300px-GnuPG.svg.png" alt=""></p>
-<p>That logo you have probably also noticed in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s <em>not end-to-end encrypted</em> and therefore completely unsecure.
+            <description>You have probably noticed that logo in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</description>
+            <content type="html"><![CDATA[<p><img src="/posts/GnuPG_logo.png" alt=""></p>
+<p>You have probably noticed that logo in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s <em>not end-to-end encrypted</em> and therefore completely unsecure.
 GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</p>
 <p>More about it:</p>
 <ul>
@@ -198,7 +198,12 @@ save
             
             <guid>https://nickohristov.de/posts/flashing_android_factory_image/</guid>
             <description>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &amp;ldquo;stock Android&amp;rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays every single Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</description>
-            <content type="html"><![CDATA[<p>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &ldquo;stock Android&rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays <em>every single</em> Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</p>
+            <content type="html"><![CDATA[
+
+    <img src="/posts/Android_logo.png" alt="Android logo" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
+
+
+<p>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &ldquo;stock Android&rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays <em>every single</em> Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</p>
 <p>Some privacy-friendly/secure android Custom ROMs:</p>
 <ul>
 <li><a href="https://e.foundation/">https://e.foundation/</a> (All in one solution)</li>

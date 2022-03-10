@@ -14,7 +14,7 @@
       <pubDate>Fri, 04 Mar 2022 16:00:00 +0100</pubDate>
       
       <guid>https://nickohristov.de/posts/gpg/</guid>
-      <description>That logo you have probably also noticed in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</description>
+      <description>You have probably noticed that logo in the contact options on my landing page. That&amp;rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&amp;rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.</description>
     </item>
     
   </channel>

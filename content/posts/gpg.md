@@ -4,9 +4,9 @@ date = "2022-03-04T16:00:00+01:00"
 tags  = ['GnuPG', 'encryption', 'email', 'tech']
 +++
 
-![](https://upload.wikimedia.org/wikipedia/de/thumb/6/6b/GnuPG.svg/300px-GnuPG.svg.png)
+![](/posts/GnuPG_logo.png)
 
-That logo you have probably also noticed in the contact options on my landing page. That's simply because as uniform and decentralized email is, it has one major flaw: At default it's _not end-to-end encrypted_ and therefore completely unsecure.
+You have probably noticed that logo in the contact options on my landing page. That's simply because as uniform and decentralized email is, it has one major flaw: At default it's _not end-to-end encrypted_ and therefore completely unsecure.
 GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.
 
 More about it:
