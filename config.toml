@@ -58,8 +58,8 @@ enableEmoji  = true
     url  = "https://matrix.to/#/@quick.silver:matrix.org"
     
   [[params.social]]
-    name = "gitlab"
-    url  = "https://gitlab.com/nelox"
+    name = "github"
+    url  = "https://github.com/nel0x"
 
   [params.logo]
     logoMark     = "$"
