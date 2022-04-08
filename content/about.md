@@ -2,7 +2,7 @@
 title= "About"
 +++
 
-_Eat. Sleep. Learn. Repeat._
+**TL;DR:** _Eat. Sleep. Learn. Repeat._
 
 ## Hello there
 
