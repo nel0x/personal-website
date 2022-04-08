@@ -1,5 +1,5 @@
 +++
-title= "About"
+title= "About - Eat. Sleep. Learn. Repeat."
 +++
 
 **TL;DR:** _Eat. Sleep. Learn. Repeat._
