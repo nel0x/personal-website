@@ -2,8 +2,6 @@
 title= "About - Eat. Sleep. Learn. Repeat."
 +++
 
-**TL;DR:** _Eat. Sleep. Learn. Repeat._
-
 ## Hello there
 
 {{< rawhtml >}}
