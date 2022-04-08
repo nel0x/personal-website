@@ -2,10 +2,12 @@
 title= "About"
 +++
 
+_Eat. Sleep. Learn. Repeat._
+
 ## Hello there
 
 {{< rawhtml >}}
-    <img src="/favicon-full.png" alt="Hello Friend" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
+    <img src="/favicon-full.png" alt="Hello Friend logo" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
 {{< /rawhtml >}}
 
 My name is Nicko (as you have probably noticed from my domain). I am currently a student at the GCE in Bayreuth, in the science and technology branch.
