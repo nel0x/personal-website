@@ -8,10 +8,10 @@ title= "About - Eat. Sleep. Learn. Repeat."
     <img src="/favicon-full.png" alt="Hello Friend logo" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
 {{< /rawhtml >}}
 
-My name is Nicko (as you have probably noticed from my domain). I am currently a student at the GCE in Bayreuth, in the science and technology branch.
-At the IT department there I’m mostly responsible for setting up & maintaining Active Directory services.
+My name is Nicko (as you have probably noticed from my domain). I am currently a student in the science and technology branch of my school.
+At the IT department there I’m mostly responsible for setting up and maintaining Active Directory services.
 
-One other great occupation of mine is home labbing. I love tinkering around with infrastrucure at home and setting up enterprise-ready environments without the pressure of costly downtimes ...
+Another great occupation of mine is home labbing. I love tinkering around with infrastrucure at home and setting up enterprise-ready environments without the pressure of costly downtimes ...
 
 My greatest skills are in observability stack (Promtheus (Thanos), Grafana, Opsgenie), the cloud (Google Cloud & basic AWS), cybersecurity (TryHackeMe & HackTheBox experience), virtualization with Proxmox and XCP-ng, Ansible automation & Docker containerization.
 
