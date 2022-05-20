@@ -44,7 +44,7 @@ I love reading and actually spend most of the free time I have to myself with bo
 Therefore here is a curated list of my favorite works following. Maybe one or the other will find a nice new inspiration. 
 
 Title									                                    |	Author			    |	Publisher
--- 									                                        |	--			        |   --
+---									                                        |	---			        |   ---
 The Clean Coder: A Code of Conduct for Professional Programmers 	        |	Robert C. Martin	|	Prentince Hall
 Permanent Record							                                |	Edward Snowden		|	S.Fischer
 Extreme Privacy: What it takes to disappear				                    |	Michael Bazzel		|	Inteltechniques
