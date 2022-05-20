@@ -18,18 +18,21 @@ My greatest skills are in observability stack (Promtheus (Thanos), Grafana, Opsg
 As for programing languages I master Python & Shellscripting, web-development with HTML, CSS & basic JavaScript & PHP.
 
 **Stuff I like:**
+
 - Linux
 - Networking
 - Cybersecurity
 - Making people understand the value of privacy
 
 **Stuff I dislike:**
+
 - Sleeping over a problem
 - Breaking drivers
 - Dirty (code) documentation
 - Redundancy
 
 **Things outside tech:**
+
 - Boxing
 - Biking
 - Reading books
@@ -42,6 +45,7 @@ Therefore here is a curated list of my favorite works following. Maybe one or th
 
 Title									|	Author			|	Publisher
 -- 									|	--			| --
+
 The Clean Coder: A Code of Conduct for Professional Programmers 	|	Robert C. Martin	|	Prentince Hall
 Permanent Record							|	Edward Snowden		|	S.Fischer
 Extreme Privacy: What it takes to disappear				|	Michael Bazzel		|	Inteltechniques
