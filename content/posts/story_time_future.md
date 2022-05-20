@@ -105,5 +105,3 @@ What questions are you asking me? Enough! I am fed up with Google, Facebook, App
 ---
 
 beep ... beep ... beep ... (hung up)
-
----
