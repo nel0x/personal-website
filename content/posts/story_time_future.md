@@ -44,24 +44,28 @@ No, I hate vegetables.
 
 ---
 How do you know that?!
-
 ---
+
 > From the participant handbook. There are your blood test results for the last 7 years.
+
 ---
 Okay, but I don't want this pizza! I have been taking medication for high cholesterol for a long time.
-
 ---
+
 > You have not been taking your medications regularly. Two months ago you bought only one box of twentyfour pills at Mareschi Pharmacy.
+
 ---
 I bought more pills at another pharmacy.
-
 ---
+
 > I can't find such transaction on your credit card.
+
 ---
 Because I paid in cash!
-
 ---
+
 > Not possible. According to your bank statement, you didn't withdraw that much money ...
+
 ---
 But I have another source of money.
 ---
