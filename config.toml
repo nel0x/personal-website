@@ -50,7 +50,7 @@ enableEmoji  = true
     url  = "http://pgp.nickohristov.de"
 
   [[params.social]]
-    name = "pgp"
+    name = "gpg"
     url  = "http://pgp.nickohristov.de"
 
   [[params.social]]
