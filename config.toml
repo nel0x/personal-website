@@ -47,11 +47,11 @@ enableEmoji  = true
     
   [[params.social]]
     name = "email"
-    url  = "http://gpg.nickohristov.de"
+    url  = "http://pgp.nickohristov.de"
 
   [[params.social]]
-    name = "gpg"
-    url  = "http://gpg.nickohristov.de"
+    name = "pgp"
+    url  = "http://pgp.nickohristov.de"
 
   [[params.social]]
     name = "matrix"
