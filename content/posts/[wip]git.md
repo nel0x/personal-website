@@ -41,3 +41,18 @@ git add .
 git commit -m "<description>"
 git push -uf origin main
 ```
+
+# RSA key
+- copy to .ssh
+
+If the user has generated a ssh public/private key pair set before
+
+- check which key have been authorized on your github or gitlab account settings
+- determine which corresponding private key must be associated from your local computer
+
+then
+
+```
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/github_rsa
+```
