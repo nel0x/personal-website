@@ -9,12 +9,10 @@ I can just recommend everyone to switch over to using Monero for transacting val
 ## XMR Wallet Adress:
 
 {{< rawhtml >}}
-    <code style="padding: 20px 20px 20px 20px; position: absolute; left: 40%; width: 50%;">
-    <p style="width: 15%;">
-    44bZqv8cXG9XEzuWMPdJXWNKfpp8pwgfh4TJNWoPj3LHRM2iMAdUa3ChZBr8ZAEFGTLm7Q8GuybuLLhkpk6UbEQTSvBjzgV
-    </p>
-    </code>
-    <br><br><br>
-    <img src="/monero.png" style="position: absolute; width: 300px; left: 40%;">
-    <br><br><br><br><br><br><br><br><br><br><br>
+    <div align="center">
+    	<p style="width: 80%; overflow:auto; word-wrap: break-word;"><code style="padding: 3px;">  		
+    			44bZqv8cXG9XEzuWMPdJXWNKfpp8pwgfh4TJNWoPj3LHRM2iMAdUa3ChZBr8ZAEFGTLm7Q8GuybuLLhkpk6UbEQTSvBjzgV
+    	</code></p>
+    	<img src="/monero.png">
+    </div>
 {{< /rawhtml >}}
