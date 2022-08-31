@@ -50,16 +50,16 @@ enableEmoji  = true
     url  = "http://pgp.nickohristov.de"
 
   [[params.social]]
-    name = "gpg"
-    url  = "http://pgp.nickohristov.de"
-
-  [[params.social]]
     name = "matrix"
     url  = "https://matrix.to/#/@quick.silver:matrix.org"
     
   [[params.social]]
     name = "github"
     url  = "https://github.com/nel0x"
+    
+  [[params.social]]
+    name = "monero"
+    url  = "/donate"
 
   [params.logo]
     logoMark     = "$"
