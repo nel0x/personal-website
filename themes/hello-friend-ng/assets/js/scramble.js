@@ -57,14 +57,14 @@ class TextScramble {
     // Example
     
     const phrases = [
-    'GPG key',    
+    'PGP Fingerprint',    
     'D195 AB97 7EB2 02D2 F76A A1A5 ADC4 150D 5FA1 E100',    
     ]
     
     const el = document.querySelector('.text')
     const fx = new TextScramble(el)
     
-    // call "GPG key"
+    // call "PGP Fingerprint"
     const next = () => {
         fx.setText(phrases[0]).then(() => {
         setTimeout(next2, 2000)
