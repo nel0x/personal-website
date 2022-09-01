@@ -59,7 +59,7 @@ enableEmoji  = true
     
   [[params.social]]
     name = "monero"
-    url  = "/donate"
+    url  = "/donation"
 
   [params.logo]
     logoMark     = "$"
