@@ -15,5 +15,6 @@ Scan the QR code or use the wallet address below.
     			44bZqv8cXG9XEzuWMPdJXWNKfpp8pwgfh4TJNWoPj3LHRM2iMAdUa3ChZBr8ZAEFGTLm7Q8GuybuLLhkpk6UbEQTSvBjzgV
     	</code></p>
     	<img src="/monero.png">
+		<br>
     </div>
 {{< /rawhtml >}}
