@@ -38,16 +38,10 @@
 
 
 <meta itemprop="name" content="GnuPG Cheatsheet">
-<meta itemprop="description" content="You have probably noticed that logo in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity.">
-<meta itemprop="datePublished" content="2022-03-04T16:00:00+01:00" />
+<meta itemprop="description" content="You have probably noticed that logo in the contact options on my landing page. That&rsquo;s simply because as uniform and decentralized email is, it has one major flaw: At default it&rsquo;s not end-to-end encrypted and therefore completely unsecure. GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy) protocol (pretty confusing naming scheme, I know ;) and offering asymetric encryption which is mostly used to ensure mail-conversation confidentiality and integrity."><meta itemprop="datePublished" content="2022-03-04T16:00:00+01:00" />
 <meta itemprop="dateModified" content="2022-03-04T16:00:00+01:00" />
-<meta itemprop="wordCount" content="400">
-<meta itemprop="image" content="https://nickohristov.de"/>
-
-
-
+<meta itemprop="wordCount" content="400"><meta itemprop="image" content="https://nickohristov.de"/>
 <meta itemprop="keywords" content="GnuPG,encryption,email,tech," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nickohristov.de"/>
 
@@ -158,21 +152,21 @@ GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy)
 </ul>
 <p>This article goes over the usage of GPG in order to teach how to use GPG for encrypting/decrypting and sining/verifying mails and documents.</p>
 <h3 id="install-gnupg">Install GnuPG</h3>
-<pre><code>sudo pacman -Syu gnupg
+<pre tabindex="0"><code>sudo pacman -Syu gnupg
 </code></pre><h3 id="configure-directory">Configure directory</h3>
-<pre><code>mkdir ~/.gnupg/
-sudo chown -R &quot;$(whoami):$(id -gn)&quot; ~/.gnupg/
+<pre tabindex="0"><code>mkdir ~/.gnupg/
+sudo chown -R &#34;$(whoami):$(id -gn)&#34; ~/.gnupg/
 chmod -R 700 ~/.gnupg
 </code></pre><h3 id="configure-keyserver">Configure keyserver</h3>
 <h4 id="gnupg">GnuPG</h4>
-<pre><code>nano ~/.gnupg/gpg.conf
-</code></pre><pre><code>keyserver hkps://keys.openpgp.org
+<pre tabindex="0"><code>nano ~/.gnupg/gpg.conf
+</code></pre><pre tabindex="0"><code>keyserver hkps://keys.openpgp.org
 </code></pre><h4 id="seahorse-workaround-since-adding-keys-doesnt-work">Seahorse (workaround; since adding keys doesn&rsquo;t work)</h4>
 <p>use dconf-editor: /desktop/gnome/crypto/pgp/keyservers &gt; custom value (see Default) &gt; <code>['hkps://keys.openpgp.org']</code></p>
 <h2 id="generate-key">Generate key</h2>
-<pre><code>cd ~/.gnupg
+<pre tabindex="0"><code>cd ~/.gnupg
 gpg --full-gen-key
-</code></pre><pre><code># Please select what kind of key you want:
+</code></pre><pre tabindex="0"><code># Please select what kind of key you want:
 1
 # What keysize do you want:
 4096
@@ -184,19 +178,19 @@ Nicko Hristov
 mail@nickohristov.de
 # Comment:
 </code></pre><h3 id="control-keys">Control keys</h3>
-<pre><code>gpg --list-keys
+<pre tabindex="0"><code>gpg --list-keys
 gpg --list-secret-keys
 </code></pre><h2 id="configure-keys">Configure keys</h2>
 <h3 id="add-more-identities-to-the-key">Add more identities to the key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>adduid
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>adduid
 ...
 trust
 5
 save
 </code></pre><h3 id="edit-keys">Edit keys</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>&gt; passwd       # change the passphrase
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>&gt; passwd       # change the passphrase
 &gt; clean        # compact any user ID that is no longer usable
 &gt; revkey       # revoke a key
 &gt; addkey       # add a subkey to this key
@@ -207,42 +201,42 @@ save
 # save (after changes!)
 </code></pre><h2 id="revoke-keys">Revoke keys</h2>
 <h3 id="generate-revocation-certificate">Generate revocation certificate</h3>
-<pre><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
+<pre tabindex="0"><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
 chmod 700 ~/.gnupg/revocation_certificate.asc
 </code></pre><h3 id="merge-key-with-revocation-certificate">Merge key with revocation certificate</h3>
-<pre><code>gpg --import revocation_certificate.asc
+<pre tabindex="0"><code>gpg --import revocation_certificate.asc
 gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
 </code></pre><h2 id="exporting-keys">Exporting keys</h2>
 <h3 id="export-key-to-keyserver">Export key to keyserver</h3>
-<pre><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+<pre tabindex="0"><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
 </code></pre><h3 id="export-public-key-as-ascii">Export public key as ASCII</h3>
-<pre><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
+<pre tabindex="0"><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
 </code></pre><h3 id="export-secret-key-as-ascii">Export secret key as ASCII</h3>
-<pre><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
+<pre tabindex="0"><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
 </code></pre><h2 id="import-keys">Import keys</h2>
 <h3 id="import-key">Import key</h3>
-<pre><code>gpg --import &lt;key-id&gt;
+<pre tabindex="0"><code>gpg --import &lt;key-id&gt;
 </code></pre><h3 id="import-key-from-keyserver">Import key from keyserver</h3>
-<pre><code>gpg --search-keys &lt;user-id&gt;
+<pre tabindex="0"><code>gpg --search-keys &lt;user-id&gt;
 gpg --recv-keys &lt;key-id&gt;
 </code></pre><h3 id="refresh-local-keys">Refresh local keys</h3>
-<pre><code>gpg --refresh
+<pre tabindex="0"><code>gpg --refresh
 </code></pre><h2 id="verify-and-sign-keys">Verify and sign keys</h2>
 <h3 id="sign-key">Sign key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>sign
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>sign
 ...
 save
 </code></pre><h3 id="trust-key">Trust key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>trust
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>trust
 1/2/3/4/5
 save
 </code></pre><h2 id="encrypt-and-decrypt-files-manually">Encrypt and decrypt files manually</h2>
 <h3 id="encrypt-file">Encrypt file</h3>
-<pre><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
+<pre tabindex="0"><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
 </code></pre><h3 id="decrypt-file">Decrypt file</h3>
-<pre><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
+<pre tabindex="0"><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
 </code></pre>
       </div>
     </article>
@@ -312,8 +306,8 @@ save
 
             
             <span class="button next">
-                <a href="https://nickohristov.de/posts/flashing_android_factory_image/">
-                    <span class="button__text">Flashing AOSP to Smartphones</span>
+                <a href="https://nickohristov.de/posts/rgbibel/">
+                    <span class="button__text">Die RGBibel</span>
                     <span class="button__icon">→</span>
                 </a>
             </span>
@@ -335,11 +329,14 @@ save
     
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&#127279; 2022</span>
+            <span>&#127279;2022</span>
+            <span><a href="https://n1ck0h21570v.onion">Tor</a></span>
             <span><a href="/gdpr/">GDPR<a></a></span>
             
             
-            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
             
             
         </div>
@@ -348,9 +345,9 @@ save
     
     <div class="footer__inner">
         <div class="footer__content">
+		     
             <span><span class="text"></span></span>
-        </div>
-    </div>
+         </div>
     
 </footer>
 
@@ -363,7 +360,7 @@ save
 
 
 
-<script type="text/javascript" src="/bundle.min.9006e041d9582fdc8c78662743d9ecdef878a052a5dcf9827796500c64d12dc4dff09f1a1c8d707135c3065d9114e8f86842f4837e5efd424833f11b9e11fc94.js" integrity="sha512-kAbgQdlYL9yMeGYnQ9ns3vh4oFKl3PmCd5ZQDGTRLcTf8J8aHI1wcTXDBl2RFOj4aEL0g35e/UJIM/EbnhH8lA=="></script>
+<script type="text/javascript" src="/bundle.min.d23700b4adce1aad57aa5afd1b861f14d38ba7784c5c1e0f1e405e0986d009f95e0bc45d462c0e4d4cc333b093a7ca401f2586edbb63b039142ce47e9e047864.js" integrity="sha512-0jcAtK3OGq1Xqlr9G4YfFNOLp3hMXB4PHkBeCYbQCfleC8RdRiwOTUzDM7CTp8pAHyWG7btjsDkULOR&#43;ngR4ZA=="></script>
 
 
 

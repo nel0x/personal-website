@@ -7,14 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 10 Mar 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Apr 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Authentication</title>
+      <link>https://nickohristov.de/posts/secure-authentication/</link>
+      <pubDate>Fri, 22 Apr 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/secure-authentication/</guid>
+      <description>Passwords are old and boring New technologies! passwordless authentiacation
+Deep dive explanation </description>
+    </item>
+    
+    <item>
+      <title>Effective search queries</title>
+      <link>https://nickohristov.de/posts/search-queries/</link>
+      <pubDate>Mon, 18 Apr 2022 19:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/search-queries/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Setup file sharing with SMB</title>
       <link>https://nickohristov.de/posts/smb/</link>
       <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
       
       <guid>https://nickohristov.de/posts/smb/</guid>
-      <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+      <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&amp;rsquo;t use it.</description>
     </item>
     
@@ -36,29 +55,6 @@ Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install sa
       <description>Though I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox. This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel &amp;amp; emulated hardware and harder automation of the deployment process.
 That&amp;rsquo;s why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.
 I will document the whole procedure with all it&amp;rsquo;s obstacles on this page, while starting with the basic and easy ones to warm up and then coming to more complex subjects, like storage sharing with Nextcloud and Syncthing.</description>
-    </item>
-    
-    <item>
-      <title>Shellscript tear-off calendar</title>
-      <link>https://nickohristov.de/posts/shellscript-tearoff/</link>
-      <pubDate>Tue, 23 Nov 2021 16:00:00 +0100</pubDate>
-      
-      <guid>https://nickohristov.de/posts/shellscript-tearoff/</guid>
-      <description>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
-After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
-Now let&amp;rsquo;s get to the exciting part, to the script which actually perfoms the task:</description>
-    </item>
-    
-    <item>
-      <title>Guide to Starting your Own Website</title>
-      <link>https://nickohristov.de/posts/own-website/</link>
-      <pubDate>Wed, 07 Jul 2021 19:00:00 +0100</pubDate>
-      
-      <guid>https://nickohristov.de/posts/own-website/</guid>
-      <description>Work in progress 👷‍♂️ 🔧
- This is a site dedicated to turning internet peasants into Internet Landlords by showing them how to setup websites, email servers, chat servers and everything in between.
-Starting a website is something that can be done in a lazy afternoon and costs pocket change.
-Most of the internet&amp;rsquo;s problems could be solved if more people had their own personal platforms, so the objective of this site is to guide any normal person through the process of installing a website.</description>
     </item>
     
   </channel>

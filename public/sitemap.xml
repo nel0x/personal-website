@@ -1,210 +1,152 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://nickohristov.de/tags/file-sharing/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/tags/network/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/posts/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/posts/smb/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/tags/smb/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/tags/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/tags/tech/</loc>
-    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/tags/email/</loc>
-    <lastmod>2022-03-04T16:00:00+01:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://nickohristov.de/tags/encryption/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/secure-authentication/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/security/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/tech/</loc>
+    <lastmod>2022-04-22T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/search-queries/</loc>
+    <lastmod>2022-04-18T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/web/</loc>
+    <lastmod>2022-04-18T19:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/file-sharing/</loc>
+    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/network/</loc>
+    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/smb/</loc>
+    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/smb/</loc>
+    <lastmod>2022-03-10T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/email/</loc>
     <lastmod>2022-03-04T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/gnupg/</loc>
     <lastmod>2022-03-04T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/gpg/</loc>
     <lastmod>2022-03-04T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://nickohristov.de/tags/cringe/</loc>
+    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/rgbibel/</loc>
+    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/off-topic/</loc>
+    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/tags/rgb/</loc>
+    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://nickohristov.de/tags/android/</loc>
-    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-02-23T16:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://nickohristov.de/tags/customrom/</loc>
-    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/posts/flashing_android_factory_image/</loc>
-    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-02-23T16:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://nickohristov.de/posts/flashing_android_image/</loc>
+    <lastmod>2022-02-23T16:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://nickohristov.de/tags/smartphone/</loc>
-    <lastmod>2022-03-01T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-02-23T16:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://nickohristov.de/tags/docker/</loc>
     <lastmod>2022-02-08T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/dockerize/</loc>
     <lastmod>2022-02-08T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/homelab/</loc>
     <lastmod>2022-02-08T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/comedy/</loc>
     <lastmod>2022-02-06T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/story-time/</loc>
     <lastmod>2022-02-06T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/story_time_future/</loc>
     <lastmod>2022-02-06T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/tracking/</loc>
     <lastmod>2022-02-06T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/freedom_and_impulses/</loc>
     <lastmod>2022-01-18T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/not-releated/</loc>
     <lastmod>2022-01-18T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/philosophy/</loc>
     <lastmod>2022-01-18T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/society/</loc>
     <lastmod>2022-01-18T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/frangibility_of_physics/</loc>
     <lastmod>2021-12-16T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/physics/</loc>
     <lastmod>2021-12-16T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/science/</loc>
     <lastmod>2021-12-16T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/automation/</loc>
     <lastmod>2021-11-23T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/linux/</loc>
     <lastmod>2021-11-23T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/posts/shellscript-tearoff/</loc>
+  </url><url>
+    <loc>https://nickohristov.de/posts/digital-tearoff-calender/</loc>
     <lastmod>2021-11-23T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/shellscripting/</loc>
     <lastmod>2021-11-23T16:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/posts/own-website/</loc>
     <lastmod>2021-07-07T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/internet/</loc>
     <lastmod>2021-07-07T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://nickohristov.de/tags/website/</loc>
     <lastmod>2021-07-07T19:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://nickohristov.de/about/</loc>
+  </url><url>
+    <loc>https://nickohristov.de/categories/</loc>
+  </url><url>
+    <loc>https://nickohristov.de/donation/</loc>
+  </url><url>
+    <loc>https://nickohristov.de/gdpr/</loc>
+  </url><url>
+    <loc>https://nickohristov.de/sources/</loc>
+  </url><url>
     <loc>https://nickohristov.de/admin-dashboard/</loc>
   </url>
-  
-  <url>
-    <loc>https://nickohristov.de/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/gdpr/</loc>
-  </url>
-  
-  <url>
-    <loc>https://nickohristov.de/sources/</loc>
-  </url>
-  
 </urlset>

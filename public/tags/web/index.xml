@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Hi, I&#39;m Nicko Hristov!</title>
+    <link>https://nickohristov.de/tags/web/</link>
+    <description>Recent content in web on Hi, I&#39;m Nicko Hristov!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 18 Apr 2022 19:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective search queries</title>
+      <link>https://nickohristov.de/posts/search-queries/</link>
+      <pubDate>Mon, 18 Apr 2022 19:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/search-queries/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

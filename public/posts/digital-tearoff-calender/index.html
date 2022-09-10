@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Nicko Hristov ">
+<meta name="description" content="Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
+After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
+Now let&amp;rsquo;s get to the exciting part, to the script which actually perfoms the task:" />
+<meta name="keywords" content="homepage, blog, shellscripting, linux, automation, tech" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://nickohristov.de/posts/digital-tearoff-calender/" />
+
+
+    <title>
+        
+            Shellscript tear-off calendar :: Hi, I&#39;m Nicko Hristov!  — A student by day, a coder by night.
+        
+    </title>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/main.c47edf39e235b482df2ff83840628fb6b276216c064604f24f8a226699cb571e.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Shellscript tear-off calendar">
+<meta itemprop="description" content="Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
+After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
+Now let&rsquo;s get to the exciting part, to the script which actually perfoms the task:"><meta itemprop="datePublished" content="2021-11-23T16:00:00+01:00" />
+<meta itemprop="dateModified" content="2021-11-23T16:00:00+01:00" />
+<meta itemprop="wordCount" content="182"><meta itemprop="image" content="https://nickohristov.de"/>
+<meta itemprop="keywords" content="shellscripting,linux,automation,tech," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nickohristov.de"/>
+
+<meta name="twitter:title" content="Shellscript tear-off calendar"/>
+<meta name="twitter:description" content="Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
+After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
+Now let&rsquo;s get to the exciting part, to the script which actually perfoms the task:"/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-11-23 16:00:00 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text">cd ~</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#379cff;
+                   animation-duration:1.1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts">Posts</a></li><li><a href="/about">About</a></li><li><a href="/sources">Sources</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://nickohristov.de/posts/digital-tearoff-calender/">Shellscript tear-off calendar</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.</p>
+<p>After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case <code>sayings.txt</code> and exchanging the website-saying, set in the <code>config.toml</code> under the <code>homeSubtitle</code> section.</p>
+<p>Now let&rsquo;s get to the exciting part, to the script which actually perfoms the task:</p>
+<pre tabindex="0"><code>#!/usr/bin/env sh
+
+# define files
+sayingslist=./sayings.txt
+sayingsconfig=./config.toml
+
+# read new saying (randomly)
+newsaying=$(shuf -n 1 $sayingslist)
+
+# replace old with new saying
+sed -i &#34;s|homeSubtitle=\&#34;.*\&#34;$|homeSubtitle=\&#34;$newsaying\&#34;|&#34; $sayingsconfig
+
+### Sayings-sellection alternatively (in sequence) done trough:
+# read new saying (1st line)
+#newsaying=$(sed -n &#39;1p&#39; $sayingslist)
+# append new saying to end of list
+#echo &#34;$newsaying&#34; &gt;&gt; $sayingslist
+# remove new saying from 1st line
+#sed -i &#34;1d&#34; $sayingslist
+</code></pre><p>After that just executing the <code>tear-off.sh</code>-script does the work like a charm.</p>
+<p>If we now want this to happen automatically on a daily basis, we can automate the execution for example with inotify-tools to run it every day, week or month.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://nickohristov.de/tags/shellscripting/">shellscripting</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/linux/">linux</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/automation/">automation</a></span>
+        <span class="tag"><a href="https://nickohristov.de/tags/tech/">tech</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        182 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-11-23 16:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://nickohristov.de/posts/frangibility_of_physics/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Fragilität der Physik</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://nickohristov.de/posts/own-website/">
+                    <span class="button__text">Guide to Starting your Own Website</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&#127279;2022</span>
+            <span><a href="https://n1ck0h21570v.onion">Tor</a></span>
+            <span><a href="/gdpr/">GDPR<a></a></span>
+            
+            
+            
+            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+		     
+            <span><span class="text"></span></span>
+         </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.d23700b4adce1aad57aa5afd1b861f14d38ba7784c5c1e0f1e405e0986d009f95e0bc45d462c0e4d4cc333b093a7ca401f2586edbb63b039142ce47e9e047864.js" integrity="sha512-0jcAtK3OGq1Xqlr9G4YfFNOLp3hMXB4PHkBeCYbQCfleC8RdRiwOTUzDM7CTp8pAHyWG7btjsDkULOR&#43;ngR4ZA=="></script>
+
+
+
+    </body>
+</html>

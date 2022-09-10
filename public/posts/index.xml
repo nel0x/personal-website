@@ -6,8 +6,34 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 10 Mar 2022 16:00:00 +0100</lastBuildDate>
+        <lastBuildDate>Fri, 22 Apr 2022 16:00:00 +0100</lastBuildDate>
         <atom:link href="https://nickohristov.de/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Secure Authentication</title>
+            <link>https://nickohristov.de/posts/secure-authentication/</link>
+            <pubDate>Fri, 22 Apr 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/secure-authentication/</guid>
+            <description>Passwords are old and boring New technologies! passwordless authentiacation
+Deep dive explanation </description>
+            <content type="html"><![CDATA[<h1 id="passwords-are-old-and-boring">Passwords are old and boring</h1>
+<h1 id="new-technologies">New technologies!</h1>
+<p>passwordless authentiacation</p>
+<h1 id="deep-dive-explanation">Deep dive explanation</h1>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Effective search queries</title>
+            <link>https://nickohristov.de/posts/search-queries/</link>
+            <pubDate>Mon, 18 Apr 2022 19:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/search-queries/</guid>
+            <description></description>
+            <content type="html"><![CDATA[<p><img src="/posts/effective_search_queries.png" alt="effective search queries cheatsheet"></p>
+]]></content>
+        </item>
         
         <item>
             <title>Setup file sharing with SMB</title>
@@ -15,18 +41,18 @@
             <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
             
             <guid>https://nickohristov.de/posts/smb/</guid>
-            <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+            <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&amp;rsquo;t use it.</description>
-            <content type="html"><![CDATA[<p>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.</p>
+            <content type="html"><![CDATA[<p>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.</p>
 <h1 id="install-and-setup-samba">Install and setup samba</h1>
-<pre><code>$ sudo apt update &amp;&amp; sudo apt install samba
+<pre tabindex="0"><code>$ sudo apt update &amp;&amp; sudo apt install samba
 </code></pre><p>For security disable Samba NetBIOS service, as we won&rsquo;t use it.</p>
-<pre><code>$ sudo systemctl disable --now nmbd.service
+<pre tabindex="0"><code>$ sudo systemctl disable --now nmbd.service
 </code></pre><p>To avoid security issues that can arise from running an unconfigured, network-enabled service, let’s stop the Samba server until configuration details are in place:</p>
-<pre><code>$ sudo systemctl stop smbd.service
+<pre tabindex="0"><code>$ sudo systemctl stop smbd.service
 </code></pre><h1 id="configure-samba-global">Configure Samba global</h1>
-<pre><code>$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak &amp;&amp; sudo nano /etc/samba/smb.conf
-</code></pre><pre><code>[global]
+<pre tabindex="0"><code>$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak &amp;&amp; sudo nano /etc/samba/smb.conf
+</code></pre><pre tabindex="0"><code>[global]
         server string = samba_server
         server role = standalone server
         bind interfaces only = yes
@@ -38,10 +64,10 @@ Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install sa
 If testparm reports <em>Loaded services file OK.</em>, then there are no syntax errors that would stop the Samba server from starting.</p>
 <h1 id="setup-samba-user--share">Setup Samba user &amp; share</h1>
 <h3 id="create-samba-root-directory">Create Samba root directory</h3>
-<pre><code>$ sudo mkdir /samba/
+<pre tabindex="0"><code>$ sudo mkdir /samba/
 $ sudo chown :sambashare /samba/
 </code></pre><h3 id="create-samba-user">Create Samba user</h3>
-<pre><code>$ sudo mkdir /samba/joe
+<pre tabindex="0"><code>$ sudo mkdir /samba/joe
 $ sudo adduser --home /samba/joe --no-create-home --shell /usr/sbin/nologin --ingroup sambashare joe
 
 $ sudo chown joe:sambashare /samba/joe/
@@ -50,32 +76,32 @@ $ sudo chmod 2770 /samba/joe/
 $ sudo smbpasswd -a joe
 $ sudo smbpasswd -e joe
 </code></pre><h3 id="setup-share">Setup share</h3>
-<pre><code>[joe]
+<pre tabindex="0"><code>[joe]
         path = /samba/joe
         browseable = no
         read only = no
         force create mode = 0660
         force directory mode = 2770
         valid users = joe
-</code></pre><pre><code>$ testparm &amp;&amp; sudo systemctl start smbd
+</code></pre><pre tabindex="0"><code>$ testparm &amp;&amp; sudo systemctl start smbd
 </code></pre><h1 id="configure-samba-clients">Configure Samba Clients</h1>
-<pre><code>$ sudo apt update &amp;&amp; sudo apt install smbclient cifs-utils
+<pre tabindex="0"><code>$ sudo apt update &amp;&amp; sudo apt install smbclient cifs-utils
 </code></pre><p>Accessing Samba share temporarily:</p>
-<pre><code>$ smbclient //10.0.1.18/joe -U joe
+<pre tabindex="0"><code>$ smbclient //10.0.1.18/joe -U joe
 </code></pre><p>You can mount a samba share to a directory in your local Linux system using the mount and cifs type option.</p>
-<pre><code>$ mkdir /mnt/smb
+<pre tabindex="0"><code>$ mkdir /mnt/smb
 $ sudo mount -t cifs -o username=joe //10.0.1.18/joe /mnt/smb
 $ df -h
 </code></pre><h3 id="mount-samba-share-using-fstab">Mount Samba share using fstab.</h3>
 <p>You can use fstab file to persist Samba shares mounting through system reboots. In my example, I have the following line added to the end of <code>/ect/fstab</code> file.</p>
-<pre><code>//10.0.1.18/joe /mnt/smb cifs credentials=/.smbcreds 0 0
-</code></pre><pre><code>$ cat &lt;&lt; EOF &gt; /.smbcreds
+<pre tabindex="0"><code>//10.0.1.18/joe /mnt/smb cifs credentials=/.smbcreds 0 0
+</code></pre><pre tabindex="0"><code>$ cat &lt;&lt; EOF &gt; /.smbcreds
 username=joe
 password=supersecretpassword
 domain=WORKGROUP
 EOF
 </code></pre><p>To test:</p>
-<pre><code>$ sudo mkdir -p /mnt/smb
+<pre tabindex="0"><code>$ sudo mkdir -p /mnt/smb
 $ sudo mount -a
 $ df -hT | grep cifs
 </code></pre><h3 id="repos">Repos:</h3>
@@ -103,21 +129,21 @@ GPG addresses exactly this problem by implementing the PGP (Pretty Good Privacy)
 </ul>
 <p>This article goes over the usage of GPG in order to teach how to use GPG for encrypting/decrypting and sining/verifying mails and documents.</p>
 <h3 id="install-gnupg">Install GnuPG</h3>
-<pre><code>sudo pacman -Syu gnupg
+<pre tabindex="0"><code>sudo pacman -Syu gnupg
 </code></pre><h3 id="configure-directory">Configure directory</h3>
-<pre><code>mkdir ~/.gnupg/
-sudo chown -R &quot;$(whoami):$(id -gn)&quot; ~/.gnupg/
+<pre tabindex="0"><code>mkdir ~/.gnupg/
+sudo chown -R &#34;$(whoami):$(id -gn)&#34; ~/.gnupg/
 chmod -R 700 ~/.gnupg
 </code></pre><h3 id="configure-keyserver">Configure keyserver</h3>
 <h4 id="gnupg">GnuPG</h4>
-<pre><code>nano ~/.gnupg/gpg.conf
-</code></pre><pre><code>keyserver hkps://keys.openpgp.org
+<pre tabindex="0"><code>nano ~/.gnupg/gpg.conf
+</code></pre><pre tabindex="0"><code>keyserver hkps://keys.openpgp.org
 </code></pre><h4 id="seahorse-workaround-since-adding-keys-doesnt-work">Seahorse (workaround; since adding keys doesn&rsquo;t work)</h4>
 <p>use dconf-editor: /desktop/gnome/crypto/pgp/keyservers &gt; custom value (see Default) &gt; <code>['hkps://keys.openpgp.org']</code></p>
 <h2 id="generate-key">Generate key</h2>
-<pre><code>cd ~/.gnupg
+<pre tabindex="0"><code>cd ~/.gnupg
 gpg --full-gen-key
-</code></pre><pre><code># Please select what kind of key you want:
+</code></pre><pre tabindex="0"><code># Please select what kind of key you want:
 1
 # What keysize do you want:
 4096
@@ -129,19 +155,19 @@ Nicko Hristov
 mail@nickohristov.de
 # Comment:
 </code></pre><h3 id="control-keys">Control keys</h3>
-<pre><code>gpg --list-keys
+<pre tabindex="0"><code>gpg --list-keys
 gpg --list-secret-keys
 </code></pre><h2 id="configure-keys">Configure keys</h2>
 <h3 id="add-more-identities-to-the-key">Add more identities to the key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>adduid
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>adduid
 ...
 trust
 5
 save
 </code></pre><h3 id="edit-keys">Edit keys</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>&gt; passwd       # change the passphrase
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>&gt; passwd       # change the passphrase
 &gt; clean        # compact any user ID that is no longer usable
 &gt; revkey       # revoke a key
 &gt; addkey       # add a subkey to this key
@@ -152,58 +178,123 @@ save
 # save (after changes!)
 </code></pre><h2 id="revoke-keys">Revoke keys</h2>
 <h3 id="generate-revocation-certificate">Generate revocation certificate</h3>
-<pre><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
+<pre tabindex="0"><code>gpg --gen-revoke &lt;key-id&gt; --output revocation_certificate.asc --armor
 chmod 700 ~/.gnupg/revocation_certificate.asc
 </code></pre><h3 id="merge-key-with-revocation-certificate">Merge key with revocation certificate</h3>
-<pre><code>gpg --import revocation_certificate.asc
+<pre tabindex="0"><code>gpg --import revocation_certificate.asc
 gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
 </code></pre><h2 id="exporting-keys">Exporting keys</h2>
 <h3 id="export-key-to-keyserver">Export key to keyserver</h3>
-<pre><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
+<pre tabindex="0"><code>gpg --send-keys &lt;key-id&gt; --keyserver hkp://keyserver.ubuntu.com
 </code></pre><h3 id="export-public-key-as-ascii">Export public key as ASCII</h3>
-<pre><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
+<pre tabindex="0"><code>gpg --export &lt;key-id&gt; --output public_key.asc --armor
 </code></pre><h3 id="export-secret-key-as-ascii">Export secret key as ASCII</h3>
-<pre><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
+<pre tabindex="0"><code>gpg --export-secret-key &lt;key-id&gt; --output secret_key.asc --armor
 </code></pre><h2 id="import-keys">Import keys</h2>
 <h3 id="import-key">Import key</h3>
-<pre><code>gpg --import &lt;key-id&gt;
+<pre tabindex="0"><code>gpg --import &lt;key-id&gt;
 </code></pre><h3 id="import-key-from-keyserver">Import key from keyserver</h3>
-<pre><code>gpg --search-keys &lt;user-id&gt;
+<pre tabindex="0"><code>gpg --search-keys &lt;user-id&gt;
 gpg --recv-keys &lt;key-id&gt;
 </code></pre><h3 id="refresh-local-keys">Refresh local keys</h3>
-<pre><code>gpg --refresh
+<pre tabindex="0"><code>gpg --refresh
 </code></pre><h2 id="verify-and-sign-keys">Verify and sign keys</h2>
 <h3 id="sign-key">Sign key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>sign
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>sign
 ...
 save
 </code></pre><h3 id="trust-key">Trust key</h3>
-<pre><code>gpg --edit-key &lt;key-id&gt;
-</code></pre><pre><code>trust
+<pre tabindex="0"><code>gpg --edit-key &lt;key-id&gt;
+</code></pre><pre tabindex="0"><code>trust
 1/2/3/4/5
 save
 </code></pre><h2 id="encrypt-and-decrypt-files-manually">Encrypt and decrypt files manually</h2>
 <h3 id="encrypt-file">Encrypt file</h3>
-<pre><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
+<pre tabindex="0"><code>gpg --encrypt --recipient &lt;recipient-public-key-id&gt; &lt;filename&gt; --armor
 </code></pre><h3 id="decrypt-file">Decrypt file</h3>
-<pre><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
+<pre tabindex="0"><code>gpg --decrypt &lt;encryptedfilename&gt; --output &lt;newfilename&gt;
 </code></pre>]]></content>
         </item>
         
         <item>
-            <title>Flashing AOSP to Smartphones</title>
-            <link>https://nickohristov.de/posts/flashing_android_factory_image/</link>
+            <title>Die RGBibel</title>
+            <link>https://nickohristov.de/posts/rgbibel/</link>
             <pubDate>Tue, 01 Mar 2022 16:00:00 +0100</pubDate>
             
-            <guid>https://nickohristov.de/posts/flashing_android_factory_image/</guid>
-            <description>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &amp;ldquo;stock Android&amp;rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays every single Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</description>
+            <guid>https://nickohristov.de/posts/rgbibel/</guid>
+            <description>RGBote  Du sollst keine Apple Produkte kaufen. Mehr RGB, mehr FPS. Du sollst die RGB-Stripes ehren wie deine eigenen RGB-Lüfter. Gaming PCs werden immer selber gebaut. Du sollst dich deiner Rainbow-Tastatur gleichstellen. Du sollst die 16,7 Millionen Farben ehren und kennen. Du sollst die deinesgleichen stets mit einem LED-Band beschenken. Kein Preis ist für eine gute RGB-Beleuchtung zu hoch. Der Threadripper ist kein Gaming-Prozessor. Eine Wasserkühlung sollte stets gefärbt sein.</description>
+            <content type="html"><![CDATA[<h2 id="rgbote">RGBote</h2>
+<ol>
+<li>Du sollst keine Apple Produkte kaufen.</li>
+<li>Mehr RGB, mehr FPS.</li>
+<li>Du sollst die RGB-Stripes ehren wie deine eigenen RGB-Lüfter.</li>
+<li>Gaming PCs werden immer selber gebaut.</li>
+<li>Du sollst dich deiner Rainbow-Tastatur gleichstellen.</li>
+<li>Du sollst die 16,7 Millionen Farben ehren und kennen.</li>
+<li>Du sollst die deinesgleichen stets mit einem LED-Band beschenken.</li>
+<li>Kein Preis ist für eine gute RGB-Beleuchtung zu hoch.</li>
+<li>Der Threadripper ist kein Gaming-Prozessor.</li>
+<li>Eine Wasserkühlung sollte stets gefärbt sein.</li>
+</ol>
+<h2 id="rgbicht">RGBicht</h2>
+<blockquote>
+<p>Vater unser im Leuchten,</p>
+<p>geheiligt werde dein RGB.</p>
+<p>Dein Win komme,</p>
+<p>Deine K/D profitiere,</p>
+<p>wie in Apex, so in PubG,</p>
+<p>Unser tägliches RGB gib uns heute.</p>
+<p>Und vergib uns unsere RGB-Sünden,</p>
+<p>wie auch wir vergeben unseren Noobs.</p>
+<p>Und führe uns nicht in Fortnite,</p>
+<p>sondern erlöse uns vom Microsoft-Store.</p>
+<p>Denn dein ist das Leuchten und und die 16 Mio Farben</p>
+<p>und der RGBismus in Ewigkeit.</p>
+<p><strong>Amen.</strong></p>
+</blockquote>
+<h2 id="rgblaw">RGBLaw</h2>
+<h3 id="art-1">Art 1</h3>
+<p>[1] Die RGB Beleuchtung eines PCs ist unantastbar. Sie zu achten und zu schützen ist Verpflichtung aller RGBisten.</p>
+<p>[2] Das RGBistische Volk bekennt sich darum RGB Beleuchtung als Grundlage jeder RGBistischen Gemeinschaft, des Friedens und der Gerechtigkeit in der Welt.</p>
+<p>[3] Die nachfolgenden RGrechte binden Gesetzgebung, vollziehende RGGewalt und RGRechtsprechung als unmittelbar geltendes Recht.</p>
+<h3 id="art-2">Art 2</h3>
+<p>[1] Jeder hat das recht auf freie Entfaltung seiner Persönlichkeit, sofern er nicht gegen die rechte der RGBistischen Gemeinschaft verstößt.</p>
+<p>[2] Jeder Hat das Recht auf RGB (Lüfter, Ram, Motherboard, GPUs, Strips, SSDs, …). Die Freiheit der Person in der Komponenten Wahl ist unverletzlich sofern RGB vorhanden ist. In diese Rechte darf nur auf Grund eines Gesetzes eingegriffen werden.</p>
+<h3 id="art-3">Art 3</h3>
+<p>[1] Alle RGBisten sind vor dem RGesetz gleich.</p>
+<p>[2] Männer und Frauen sind gleichberechtigt. Der RGB Staat fördert die tatsächliche Durchsetzung der Gleichberechtigung von Frauen und Männern und wirkt auf die Beseitigung bestehender Nachteile hin, sofern sie RGB Komponenten im PC verbaut haben.</p>
+<p>[3] Niemand darf wegen seiner im PC verbauten RGB Komponenten benachteiligt oder bevorzugt werden, es sei denn, es sind keine RGB Komponenten verbaut.</p>
+<h3 id="art-4">Art 4</h3>
+<p>[1] Die Freiheit der gewählten Komponenten des PCs sowie die Aauswahl der RGB Bestandteile sind unverletzlich.</p>
+<p>[2] Die ungestörte RGB Ausübung wird zu jeder Zeit gewährleistet.</p>
+<p>[3] Niemand darf gegen sein RGewissen zum Kriegsdienst in CS-GO mit der Waffe gezwungen werden. Das Nähere regelt ein RGesetz.</p>
+<h3 id="art-5">Art 5</h3>
+<p>[1] Jeder hat das Recht, seine Meinung in Wort, Schrift und Bild frei zu äußern und zu verbreiten und sich aus allgemein zugänglichen Quellen ungehindert zu unterrichten es sei denn, die Meinung oder Quelle spricht sich gegen den RGBismus aus. Die Pressefreiheit und die Freiheit der RGBerichterstattung durch Rundfunk und RGBFilm werden gewährleistet. Eine Zensur findet nicht statt.</p>
+<p>[2] Diese RGRechte finden ihre Schranken in den Vorschriften der allgemeinen RGesetze, den gesetzlichen RGBestimmungen zum Schutze der Jugend und in dem Recht der persönlichen Ehre.</p>
+<p>[3] Kunst und Wissenschaft, Forschung und Lehre sind frei, sofern sie von RGBisten ausgeübt worden sind. Die Freiheit der Lehre entbindet nicht von der Treue zur RGBVerfassung.</p>
+<h3 id="art-6">Art 6</h3>
+<p>[1] Der RGBismus steht unter besonderen Schutze der staatlichen Ordnung.</p>
+<p>[2] Pflege und Erziehung der Kinder zum RGBismus sind das natürliche Recht der Eltern und die zuvörderst ihnen obliegende Pflicht. Über ihre Betätigung wacht die RGBistische Gemeinschaft.</p>
+<p>[3] Gegen den Willen der Erziehungsberechtigten dürfen Kinder nur auf Grund mangelnden RGBs von der Familie getrennt werden, wenn die Erziehungsberechtigten versagen oder wenn die Kinder aus anderen Gründen sich von der RGBistischen Gemeinschaft abzuwenden drohen.</p>
+<p>[4] Jedes RGBistische Mitglied hat Anspruch auf den Schutz und die Fürsorge der Gemeinschaft.</p>
+<p>[5] Den unRGBistischen Kindern sind durch die RGesetzgebung die ungleichen Bedingungen für ihre leibliche und seelische Entwicklung und ihre Stellung in der Gesellschaft zu schaffen wie den RGBistischen Kindern.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Flashing AOSP to Smartphones</title>
+            <link>https://nickohristov.de/posts/flashing_android_image/</link>
+            <pubDate>Wed, 23 Feb 2022 16:00:00 +0100</pubDate>
+            
+            <guid>https://nickohristov.de/posts/flashing_android_image/</guid>
+            <description>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystems down and former is only true for &amp;ldquo;stock Android&amp;rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays every single Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse Google services.</description>
             <content type="html"><![CDATA[
 
     <img src="/posts/Android_logo.png" alt="Android logo" style="float: right; height: 160px; margin: 20px 0px 20px 20px;">
 
 
-<p>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &ldquo;stock Android&rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays <em>every single</em> Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</p>
+<p>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystems down and former is only true for &ldquo;stock Android&rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays <em>every single</em> Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse Google services.</p>
 <p>Some privacy-friendly/secure android Custom ROMs:</p>
 <ul>
 <li><a href="https://e.foundation/">https://e.foundation/</a> (All in one solution)</li>
@@ -213,25 +304,33 @@ save
 <li><a href="https://lineageos.org/">https://lineageos.org/</a> (multi-functional AOSP-Base)</li>
 <li><a href="https://volla.online/de/">https://volla.online/de/</a> (VollaOS - beautiful but propriatary UI)</li>
 </ul>
-<p>Howerver, actually most smartphones lock the bootloader of their devices in some kind of way, so that it&rsquo;s either completely impossible to install Custom ROMs or that doing so e.g. breaks the bootloader partition and leaves some irreversible mark.
+<p>Howerver, most vendors lock the bootloader of their devices in some kind of way, so that it&rsquo;s either completely impossible to install Custom ROMs or that doing so e.g. breaks the bootloader partition and leaves some irreversible mark.
 So before trying to follow along this guide or even buying a new phone it&rsquo;s smart to make sure if the device supports such modifications.</p>
-<p>But if it does, like (very ironically) the Google &amp; OnePlus phones do, the following steps are required to unlock the bootloader, flash the android image and lock the bootloader again. This guide is written specificly for GrapheneOS and CalyxOS but should be roughly the way for flashing any android-based image; only slight changes may be required in the future, which always can be looked up at the corresponding projetct sites.</p>
+<p>But if it does, like (very ironically) the Google &amp; OnePlus phones do, the following steps are required to unlock the bootloader, flash the android image and lock the bootloader again. This guide is written specificly for Graphene and Calyx OS but should be roughly the way for flashing any android-based image; only slight changes may be required in the future, which always can be looked up at the corresponding projetct sites.</p>
 <h2 id="download-the-sdk-platform-tools">Download the SDK Platform tools</h2>
 <p><a href="https://developer.android.com/studio/releases/platform-tools">https://developer.android.com/studio/releases/platform-tools</a></p>
-<pre><code>$ curl -O https://dl.google.com/android/repository/platform-tools_r30.0.4-linux.zip
-$ echo '5be24ed897c7e061ba800bfa7b9ebb4b0f8958cc062f4b2202701e02f2725891  platform-tools_r30.0.4-linux.zip' | $ $ $ sha256sum -c
-$ unzip platform-tools_r30.0.4-linux.zip
-</code></pre><h2 id="download-the-official-android-image">Download the official android image</h2>
-<p><a href="https://developers.google.com/android/images">https://developers.google.com/android/images</a></p>
-<h2 id="unzip-both">Unzip both</h2>
-<pre><code>$ unzip *factory*.zip
+<pre tabindex="0"><code>$ curl -O https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+$ sha256sum platform-tools*.zip
 $ unzip platform-tools*.zip
+</code></pre><h2 id="download-the-factory-android-image">Download the factory android image</h2>
+<p>Depending on which derivative you wanna use &hellip;</p>
+<ul>
+<li><a href="https://developers.google.com/android/images">https://developers.google.com/android/images</a></li>
+<li><a href="https://calyxos.org/install/">https://calyxos.org/install/</a></li>
+<li><a href="https://grapheneos.org/releases">https://grapheneos.org/releases</a></li>
+</ul>
+<h2 id="unzip-and-merge-contents">Unzip and merge contents</h2>
+<pre tabindex="0"><code>$ unzip *factory*.zip
+$ sha256sum *factory*.zip
 </code></pre><p>Then copy SDK-Tools Folder-content into Image folder and cd into the image folder.</p>
 <h2 id="correct-fastboot-path">Correct fastboot Path</h2>
-<pre><code>$ sudo nano flash-all.sh
-</code></pre><p>Remove if-query Change every &lsquo;fastboot&rsquo; to &lsquo;./fastboot&rsquo;</p>
+<pre tabindex="0"><code>$ sudo nano flash-all.sh
+</code></pre><ul>
+<li>Remove if-query</li>
+<li>Change every &lsquo;fastboot&rsquo; to &lsquo;./fastboot&rsquo;</li>
+</ul>
 <h2 id="for-safety-remove-fastboot-distro-programm">(For safety) Remove fastboot Distro-Programm</h2>
-<pre><code>$ sudo pacman -R android-tools
+<pre tabindex="0"><code>$ sudo pacman -R android-tools
 </code></pre><h2 id="then-on-the-phone">Then, on the phone:</h2>
 <ul>
 <li>Enable OEM Unlocking (in the Developer Settings)</li>
@@ -239,14 +338,14 @@ $ unzip platform-tools*.zip
 <li>Reboot into fastboot-mode by <code>Vol- + Power</code></li>
 </ul>
 <h2 id="list-devices">List devices</h2>
-<pre><code>$ sudo ./fastboot devices
+<pre tabindex="0"><code>$ sudo ./fastboot devices
 </code></pre><h2 id="unlock-bootloader">Unlock bootloader</h2>
-<pre><code>$ sudo ./fastboot flashing unlock
+<pre tabindex="0"><code>$ sudo ./fastboot flashing unlock
 </code></pre><h2 id="flash-phone">Flash Phone</h2>
-<pre><code>$ sudo ./flash-all.sh
+<pre tabindex="0"><code>$ sudo ./flash-all.sh
 </code></pre><h2 id="first-check-if-aosp-installed-correctly-without-yet-setting-it-up">First check if AOSP installed correctly (without yet setting it up!)</h2>
 <h2 id="then-lock-the-bootloader-again">Then lock the bootloader again</h2>
-<pre><code>$ sudo ./fastboot flashing lock
+<pre tabindex="0"><code>$ sudo ./fastboot flashing lock
 </code></pre><h2 id="lastly-restart-setup-and-enjoy-your-new-os-">Lastly: Restart, setup and enjoy your new OS! :)</h2>
 ]]></content>
         </item>
@@ -289,13 +388,13 @@ A bunch of available images can be found at <a href="https://hub.docker.com">htt
 <ol>
 <li>Install Docker and Docker-compose</li>
 </ol>
-<pre><code>$ sudo apt install docker.io docker-compose
+<pre tabindex="0"><code>$ sudo apt install docker.io docker-compose
 </code></pre><ol start="2">
 <li>Portainer management UI Deployment
 <a href="https://docs.portainer.io/v/ce-2.11/start/install/server/docker/linux">official docs</a></li>
 </ol>
-<pre><code># docker volume create portainer_data
-</code></pre><pre><code># docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
+<pre tabindex="0"><code># docker volume create portainer_data
+</code></pre><pre tabindex="0"><code># docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
     --restart=always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
@@ -304,8 +403,8 @@ A bunch of available images can be found at <a href="https://hub.docker.com">htt
 <h1 id="portainer-ui">Portainer UI</h1>
 <p>As much as I love the command line, Portainer is a great web interface for Docker, which also allows introducing systems and containerization concepts to less advanced linux sysadmins.
 Unfortunately (at least at the time of writing &hellip;) there are barely templates for a Portainer docker-compose file online, but at least it&rsquo;s not too hard to build it ourselves, as there are only a few lines of configuration needed.</p>
-<pre><code># mkdir /mnt/portainer/ &amp;&amp; cd /mnt/portainer/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
-</code></pre><pre><code>version: &quot;3.5&quot;
+<pre tabindex="0"><code># mkdir /mnt/portainer/ &amp;&amp; cd /mnt/portainer/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre tabindex="0"><code>version: &#34;3.5&#34;
 services:
   jellyfin:
     image: portainer/portainer-ce
@@ -313,7 +412,7 @@ services:
     ports:
       - 8000:8000
       - 9443:9443
-    network_mode: &quot;host&quot;
+    network_mode: &#34;host&#34;
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer_data:/data
@@ -321,16 +420,16 @@ services:
 </code></pre><h1 id="reverse-proxy">Reverse Proxy</h1>
 <h2 id="ngnix-proxy-manager">NGNIX Proxy Manager</h2>
 <p>Eventually later on I will go with Caddy, Traeffic or HAProxy. But for now let&rsquo;s start with NGNIX Proxy Manager. (-&gt; <a href="https://nginxproxymanager.com/guide/#quick-setup">official docs</a>)</p>
-<pre><code># mkdir /mnt/reverse-proxy/ &amp;&amp; cd /mnt/reverse-proxy/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
-</code></pre><pre><code>version: '3'
+<pre tabindex="0"><code># mkdir /mnt/reverse-proxy/ &amp;&amp; cd /mnt/reverse-proxy/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre tabindex="0"><code>version: &#39;3&#39;
 services:
   app:
-    image: 'jc21/nginx-proxy-manager'
+    image: &#39;jc21/nginx-proxy-manager&#39;
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - &#39;80:80&#39;
+      - &#39;81:81&#39;
+      - &#39;443:443&#39;
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
@@ -338,9 +437,9 @@ services:
 <h1 id="dashboard">Dashboard</h1>
 <p>Personally, I found <em>DashMachine</em> by far best suited for my use case but there are dozens of options available e.g. on <a href="https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards">https://github.com/awesome-selfhosted/awesome-selfhosted#personal-dashboards</a></p>
 <p>(<a href="https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/">https://dbtechreviews.com/2020/03/how-to-install-dashmachine-dashboard-on-docker-and-omv5/</a>)</p>
-<pre><code># mkdir /mnt/dashmachine/ &amp;&amp; cd /mnt/dashmachine/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
-</code></pre><pre><code>---
-version: &quot;3&quot;
+<pre tabindex="0"><code># mkdir /mnt/dashmachine/ &amp;&amp; cd /mnt/dashmachine/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre tabindex="0"><code>---
+version: &#34;3&#34;
 services:
   dashmachine:
     image: rmountjoy/dashmachine
@@ -356,9 +455,9 @@ services:
 <h1 id="documentation">Documentation</h1>
 <h2 id="bookstack">BookStack</h2>
 <p>For that one I&rsquo;m constantly hopping between multiple Markdown plattforms as well as some traditional documentation systems like MediaWiki. This time lets go with the multi-functional, easy-to-use platform <a href="https://github.com/linuxserver/docker-bookstack">BookStack</a>.</p>
-<pre><code># mkdir /mnt/bookstack/ &amp;&amp; cd /mnt/bookstack/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
-</code></pre><pre><code>---
-version: &quot;2&quot;
+<pre tabindex="0"><code># mkdir /mnt/bookstack/ &amp;&amp; cd /mnt/bookstack/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre tabindex="0"><code>---
+version: &#34;2&#34;
 services:
   bookstack:
     image: lscr.io/linuxserver/bookstack
@@ -401,14 +500,14 @@ services:
 <p>This is quite a niche project, but with the great goal to simplify the download process of media - as it&rsquo;s name implies mainly for books - from the IRC Highway. As I&rsquo;m a passionate reader and love discovering new books, this seemed pretty appealing.</p>
 <p>Of course, I don&rsquo;t encourage anyone to download pirated media of the web and I want to strongly emphasize the advantage of buying books in a regional store and thus supporting the authors, who hardly earn any money from selling books.</p>
 <p>Anyways, for the project itself (at least till now) it seems well maintained and got it&rsquo;s last update only five months ago. On their <a href="https://github.com/evan-buss/openbooks">Githup page</a> you can find the official docker instructions but be sure to remove the <code>environment:</code>-section from the given docker-compose file (or eventually adapt the <code>/openbooks/</code> path to <code>./</code>; haven&rsquo;t tried this yet).</p>
-<pre><code># mkdir /mnt/openbooks/ &amp;&amp; cd /mnt/openbooks/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
-</code></pre><pre><code>version: '3.3'
+<pre tabindex="0"><code># mkdir /mnt/openbooks/ &amp;&amp; cd /mnt/openbooks/ &amp;&amp; vim docker-compose.yml &amp;&amp; docker-compose up -d
+</code></pre><pre tabindex="0"><code>version: &#39;3.3&#39;
 services:
     openbooks:
         ports:
-            - '8085:80'
+            - &#39;8085:80&#39;
         volumes:
-            - './booksVolume:/books'
+            - &#39;./booksVolume:/books&#39;
         restart: unless-stopped
         container_name: OpenBooks
         command: --persist
@@ -421,7 +520,7 @@ volumes:
 <h2 id="jellyfin">Jellyfin</h2>
 <p>There are loads of different media server solutions for organizing and streaming your media content. Ultimately Emby was my choice, but it comes with the price of not beeing open-source. As this is an absolute exclusion criterion for me, I therefore have to view it as pure garbage. Lukely there is a volunteer-built, privacy-friendly &amp; open-source fork of it, called <a href="https://jellyfin.org/">Jellyfin</a>.</p>
 <p>That&rsquo;s what I use for two years and I&rsquo;m happily fine with. So let&rsquo;s try to get it up and running in a docker container.</p>
-<pre><code>version: &quot;3.5&quot;
+<pre tabindex="0"><code>version: &#34;3.5&#34;
 services:
   jellyfin:
     image: jellyfin/jellyfin
@@ -431,7 +530,7 @@ services:
     ports:
       - 8920:8920
       - 8096:8096
-    network_mode: &quot;host&quot;
+    network_mode: &#34;host&#34;
     volumes:
       - ./config:/config
       - ./cache:/cache
@@ -450,7 +549,7 @@ services:
   No, sir! This is Google pizzeria.
   Oh, I must have dialed the wrong number?
   No sir, Google bought the pizzeria.
-  Ah, okay! Then my order is&amp;hellip;
+  Ah, okay! They my order is&amp;hellip;
   Sir, would you like to order the usual?
   The usual? Do you know me?
   According to our caller ID, you&amp;rsquo;ve ordered a medium crusted sausage pizza thirty times in the past.</description>
@@ -468,7 +567,7 @@ services:
 <p>No sir, Google bought the pizzeria.</p>
 </blockquote>
 <hr>
-<p>Ah, okay! Then my order is&hellip;</p>
+<p>Ah, okay! They my order is&hellip;</p>
 <hr>
 <blockquote>
 <p>Sir, would you like to order the usual?</p>
@@ -540,7 +639,7 @@ services:
             <guid>https://nickohristov.de/posts/freedom_and_impulses/</guid>
             <description>Was bedeutet Freiheit? Welche der beiden folgenden Personen ist freier:
  Ein Drogensüchtiger. Ein Durchschnittsmensch, der nur deshalb nicht drogensüchtig ist, weil er in einem Land lebt, in dem Drogen so reguliert oder beschämt werden, dass sie schwer zu bekommen sind.  Die meisten modernen Menschen werden hier eine Art kognitive Dissonanz, eine Art Störung in ihrer Matrix haben. In der modernen Auffassung von Freiheit bedeutet Freiheit die Fähigkeit, zu tun, was man will, ohne dass die Regierung oder die Gesellschaft einem vorschreibt, was man zu tun hat, so dass (1), der Drogenabhängige, &amp;ldquo;freier&amp;rdquo; sein sollte.</description>
-            <content type="html"><![CDATA[<p><img src="/posts//freedom.jpg" alt="freedom"></p>
+            <content type="html"><![CDATA[<p><img src="/posts/freedom.jpg" alt="freedom"></p>
 <h2 id="was-bedeutet-freiheit">Was bedeutet Freiheit?</h2>
 <p>Welche der beiden folgenden Personen ist freier:</p>
 <ol>
@@ -624,17 +723,17 @@ services:
         
         <item>
             <title>Shellscript tear-off calendar</title>
-            <link>https://nickohristov.de/posts/shellscript-tearoff/</link>
+            <link>https://nickohristov.de/posts/digital-tearoff-calender/</link>
             <pubDate>Tue, 23 Nov 2021 16:00:00 +0100</pubDate>
             
-            <guid>https://nickohristov.de/posts/shellscript-tearoff/</guid>
+            <guid>https://nickohristov.de/posts/digital-tearoff-calender/</guid>
             <description>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
 After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
 Now let&amp;rsquo;s get to the exciting part, to the script which actually perfoms the task:</description>
             <content type="html"><![CDATA[<p>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.</p>
 <p>After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case <code>sayings.txt</code> and exchanging the website-saying, set in the <code>config.toml</code> under the <code>homeSubtitle</code> section.</p>
 <p>Now let&rsquo;s get to the exciting part, to the script which actually perfoms the task:</p>
-<pre><code>#!/usr/bin/env sh
+<pre tabindex="0"><code>#!/usr/bin/env sh
 
 # define files
 sayingslist=./sayings.txt
@@ -644,15 +743,15 @@ sayingsconfig=./config.toml
 newsaying=$(shuf -n 1 $sayingslist)
 
 # replace old with new saying
-sed -i &quot;s|homeSubtitle=\&quot;.*\&quot;$|homeSubtitle=\&quot;$newsaying\&quot;|&quot; $sayingsconfig
+sed -i &#34;s|homeSubtitle=\&#34;.*\&#34;$|homeSubtitle=\&#34;$newsaying\&#34;|&#34; $sayingsconfig
 
 ### Sayings-sellection alternatively (in sequence) done trough:
 # read new saying (1st line)
-#newsaying=$(sed -n '1p' $sayingslist)
+#newsaying=$(sed -n &#39;1p&#39; $sayingslist)
 # append new saying to end of list
-#echo &quot;$newsaying&quot; &gt;&gt; $sayingslist
+#echo &#34;$newsaying&#34; &gt;&gt; $sayingslist
 # remove new saying from 1st line
-#sed -i &quot;1d&quot; $sayingslist
+#sed -i &#34;1d&#34; $sayingslist
 </code></pre><p>After that just executing the <code>tear-off.sh</code>-script does the work like a charm.</p>
 <p>If we now want this to happen automatically on a daily basis, we can automate the execution for example with inotify-tools to run it every day, week or month.</p>
 ]]></content>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>security on Hi, I&#39;m Nicko Hristov!</title>
+    <link>https://nickohristov.de/tags/security/</link>
+    <description>Recent content in security on Hi, I&#39;m Nicko Hristov!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 22 Apr 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Authentication</title>
+      <link>https://nickohristov.de/posts/secure-authentication/</link>
+      <pubDate>Fri, 22 Apr 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/secure-authentication/</guid>
+      <description>Passwords are old and boring New technologies! passwordless authentiacation
+Deep dive explanation </description>
+    </item>
+    
+  </channel>
+</rss>

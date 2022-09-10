@@ -10,10 +10,10 @@
     <lastBuildDate>Tue, 23 Nov 2021 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shellscript tear-off calendar</title>
-      <link>https://nickohristov.de/posts/shellscript-tearoff/</link>
+      <link>https://nickohristov.de/posts/digital-tearoff-calender/</link>
       <pubDate>Tue, 23 Nov 2021 16:00:00 +0100</pubDate>
       
-      <guid>https://nickohristov.de/posts/shellscript-tearoff/</guid>
+      <guid>https://nickohristov.de/posts/digital-tearoff-calender/</guid>
       <description>Yesterday I came up with the idea to have the saying on my landing page dynamically change daily.
 After some tinkering (to be honest: round about 14 hours) I realized this can be achived by saving all sayings line by line into a file, in this case sayings.txt and exchanging the website-saying, set in the config.toml under the homeSubtitle section.
 Now let&amp;rsquo;s get to the exciting part, to the script which actually perfoms the task:</description>

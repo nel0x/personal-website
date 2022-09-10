@@ -7,14 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 10 Mar 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Apr 2022 16:00:00 +0100</lastBuildDate><atom:link href="https://nickohristov.de/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Authentication</title>
+      <link>https://nickohristov.de/posts/secure-authentication/</link>
+      <pubDate>Fri, 22 Apr 2022 16:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/secure-authentication/</guid>
+      <description>Passwords are old and boring New technologies! passwordless authentiacation
+Deep dive explanation </description>
+    </item>
+    
+    <item>
+      <title>Effective search queries</title>
+      <link>https://nickohristov.de/posts/search-queries/</link>
+      <pubDate>Mon, 18 Apr 2022 19:00:00 +0100</pubDate>
+      
+      <guid>https://nickohristov.de/posts/search-queries/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Setup file sharing with SMB</title>
       <link>https://nickohristov.de/posts/smb/</link>
       <pubDate>Thu, 10 Mar 2022 16:00:00 +0100</pubDate>
       
       <guid>https://nickohristov.de/posts/smb/</guid>
-      <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+      <description>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&amp;rsquo;t use it.</description>
     </item>
     
@@ -28,39 +47,12 @@ Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install sa
     </item>
     
     <item>
-      <title>Flashing AOSP to Smartphones</title>
-      <link>https://nickohristov.de/posts/flashing_android_factory_image/</link>
+      <title>Die RGBibel</title>
+      <link>https://nickohristov.de/posts/rgbibel/</link>
       <pubDate>Tue, 01 Mar 2022 16:00:00 +0100</pubDate>
       
-      <guid>https://nickohristov.de/posts/flashing_android_factory_image/</guid>
-      <description>Android is a great open source smartphone operating system and because based on Linux, with almost unlimited customization possibilities. Unfortunately, vendors like to lock their ecosystem down and this is only true for &amp;ldquo;stock Android&amp;rdquo; or more precisely the AOSP (Android Open Source Platform) and nowadays every single Android system shipped by popular manufacturers like OnePlus, Samsung and ZTE is bloated with tons of proprietary crapware and the even worse the Google services.</description>
-    </item>
-    
-    <item>
-      <title>Dockerize Homelab</title>
-      <link>https://nickohristov.de/posts/dockerize/</link>
-      <pubDate>Tue, 08 Feb 2022 16:00:00 +0100</pubDate>
-      
-      <guid>https://nickohristov.de/posts/dockerize/</guid>
-      <description>Though I love docker and containerization, most of my infrastructure is still hosted on Virtual Machines via Proxmox. This has some obvious drawbacks like slower (re-)starting times, the use of more ressources due to the virtualized kernel &amp;amp; emulated hardware and harder automation of the deployment process.
-That&amp;rsquo;s why I finally got myself to migrating my infrastructure over as well as discovering some new sysyems while exploring docker.
-I will document the whole procedure with all it&amp;rsquo;s obstacles on this page, while starting with the basic and easy ones to warm up and then coming to more complex subjects, like storage sharing with Nextcloud and Syncthing.</description>
-    </item>
-    
-    <item>
-      <title>Story time: What future could look like</title>
-      <link>https://nickohristov.de/posts/story_time_future/</link>
-      <pubDate>Sun, 06 Feb 2022 19:00:00 +0100</pubDate>
-      
-      <guid>https://nickohristov.de/posts/story_time_future/</guid>
-      <description>Hello, is this Pizzeria Palermo?
-  No, sir! This is Google pizzeria.
-  Oh, I must have dialed the wrong number?
-  No sir, Google bought the pizzeria.
-  Ah, okay! Then my order is&amp;hellip;
-  Sir, would you like to order the usual?
-  The usual? Do you know me?
-  According to our caller ID, you&amp;rsquo;ve ordered a medium crusted sausage pizza thirty times in the past.</description>
+      <guid>https://nickohristov.de/posts/rgbibel/</guid>
+      <description>RGBote  Du sollst keine Apple Produkte kaufen. Mehr RGB, mehr FPS. Du sollst die RGB-Stripes ehren wie deine eigenen RGB-Lüfter. Gaming PCs werden immer selber gebaut. Du sollst dich deiner Rainbow-Tastatur gleichstellen. Du sollst die 16,7 Millionen Farben ehren und kennen. Du sollst die deinesgleichen stets mit einem LED-Band beschenken. Kein Preis ist für eine gute RGB-Beleuchtung zu hoch. Der Threadripper ist kein Gaming-Prozessor. Eine Wasserkühlung sollte stets gefärbt sein.</description>
     </item>
     
   </channel>

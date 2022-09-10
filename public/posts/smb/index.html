@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Nicko Hristov ">
-<meta name="description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+<meta name="description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&amp;rsquo;t use it." />
 <meta name="keywords" content="homepage, blog, network, smb, file-sharing, tech" />
 <meta name="robots" content="noodp" />
@@ -39,22 +39,16 @@ Install and setup samba $ sudo apt update &amp;amp;&amp;amp; sudo apt install sa
 
 
 <meta itemprop="name" content="Setup file sharing with SMB">
-<meta itemprop="description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
-Install and setup samba $ sudo apt update &amp;&amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&rsquo;t use it.">
-<meta itemprop="datePublished" content="2022-03-10T16:00:00+01:00" />
+<meta itemprop="description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
+Install and setup samba $ sudo apt update &amp;&amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&rsquo;t use it."><meta itemprop="datePublished" content="2022-03-10T16:00:00+01:00" />
 <meta itemprop="dateModified" content="2022-03-10T16:00:00+01:00" />
-<meta itemprop="wordCount" content="412">
-<meta itemprop="image" content="https://nickohristov.de"/>
-
-
-
+<meta itemprop="wordCount" content="413"><meta itemprop="image" content="https://nickohristov.de"/>
 <meta itemprop="keywords" content="network,smb,file-sharing,tech," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://nickohristov.de"/>
 
 <meta name="twitter:title" content="Setup file sharing with SMB"/>
-<meta name="twitter:description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.
+<meta name="twitter:description" content="Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.
 Install and setup samba $ sudo apt update &amp;&amp; sudo apt install samba For security disable Samba NetBIOS service, as we won&rsquo;t use it."/>
 
 
@@ -151,16 +145,16 @@ Install and setup samba $ sudo apt update &amp;&amp; sudo apt install samba For 
       
 
       <div class="post-content">
-        <p>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as cheatsheet for quickly setting up samba shares on the home network.</p>
+        <p>Having hundreds of gigabytes and sometimes even multiple terabytes can get fastly very challanging for regular transfers and backups. Therefore we can make management very easy when instead using network storage, which only needs to be mounted on the corresponding machines. The following should serve as a cheatsheet for quickly setting up samba shares on the home network.</p>
 <h1 id="install-and-setup-samba">Install and setup samba</h1>
-<pre><code>$ sudo apt update &amp;&amp; sudo apt install samba
+<pre tabindex="0"><code>$ sudo apt update &amp;&amp; sudo apt install samba
 </code></pre><p>For security disable Samba NetBIOS service, as we won&rsquo;t use it.</p>
-<pre><code>$ sudo systemctl disable --now nmbd.service
+<pre tabindex="0"><code>$ sudo systemctl disable --now nmbd.service
 </code></pre><p>To avoid security issues that can arise from running an unconfigured, network-enabled service, let’s stop the Samba server until configuration details are in place:</p>
-<pre><code>$ sudo systemctl stop smbd.service
+<pre tabindex="0"><code>$ sudo systemctl stop smbd.service
 </code></pre><h1 id="configure-samba-global">Configure Samba global</h1>
-<pre><code>$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak &amp;&amp; sudo nano /etc/samba/smb.conf
-</code></pre><pre><code>[global]
+<pre tabindex="0"><code>$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak &amp;&amp; sudo nano /etc/samba/smb.conf
+</code></pre><pre tabindex="0"><code>[global]
         server string = samba_server
         server role = standalone server
         bind interfaces only = yes
@@ -172,10 +166,10 @@ Install and setup samba $ sudo apt update &amp;&amp; sudo apt install samba For 
 If testparm reports <em>Loaded services file OK.</em>, then there are no syntax errors that would stop the Samba server from starting.</p>
 <h1 id="setup-samba-user--share">Setup Samba user &amp; share</h1>
 <h3 id="create-samba-root-directory">Create Samba root directory</h3>
-<pre><code>$ sudo mkdir /samba/
+<pre tabindex="0"><code>$ sudo mkdir /samba/
 $ sudo chown :sambashare /samba/
 </code></pre><h3 id="create-samba-user">Create Samba user</h3>
-<pre><code>$ sudo mkdir /samba/joe
+<pre tabindex="0"><code>$ sudo mkdir /samba/joe
 $ sudo adduser --home /samba/joe --no-create-home --shell /usr/sbin/nologin --ingroup sambashare joe
 
 $ sudo chown joe:sambashare /samba/joe/
@@ -184,32 +178,32 @@ $ sudo chmod 2770 /samba/joe/
 $ sudo smbpasswd -a joe
 $ sudo smbpasswd -e joe
 </code></pre><h3 id="setup-share">Setup share</h3>
-<pre><code>[joe]
+<pre tabindex="0"><code>[joe]
         path = /samba/joe
         browseable = no
         read only = no
         force create mode = 0660
         force directory mode = 2770
         valid users = joe
-</code></pre><pre><code>$ testparm &amp;&amp; sudo systemctl start smbd
+</code></pre><pre tabindex="0"><code>$ testparm &amp;&amp; sudo systemctl start smbd
 </code></pre><h1 id="configure-samba-clients">Configure Samba Clients</h1>
-<pre><code>$ sudo apt update &amp;&amp; sudo apt install smbclient cifs-utils
+<pre tabindex="0"><code>$ sudo apt update &amp;&amp; sudo apt install smbclient cifs-utils
 </code></pre><p>Accessing Samba share temporarily:</p>
-<pre><code>$ smbclient //10.0.1.18/joe -U joe
+<pre tabindex="0"><code>$ smbclient //10.0.1.18/joe -U joe
 </code></pre><p>You can mount a samba share to a directory in your local Linux system using the mount and cifs type option.</p>
-<pre><code>$ mkdir /mnt/smb
+<pre tabindex="0"><code>$ mkdir /mnt/smb
 $ sudo mount -t cifs -o username=joe //10.0.1.18/joe /mnt/smb
 $ df -h
 </code></pre><h3 id="mount-samba-share-using-fstab">Mount Samba share using fstab.</h3>
 <p>You can use fstab file to persist Samba shares mounting through system reboots. In my example, I have the following line added to the end of <code>/ect/fstab</code> file.</p>
-<pre><code>//10.0.1.18/joe /mnt/smb cifs credentials=/.smbcreds 0 0
-</code></pre><pre><code>$ cat &lt;&lt; EOF &gt; /.smbcreds
+<pre tabindex="0"><code>//10.0.1.18/joe /mnt/smb cifs credentials=/.smbcreds 0 0
+</code></pre><pre tabindex="0"><code>$ cat &lt;&lt; EOF &gt; /.smbcreds
 username=joe
 password=supersecretpassword
 domain=WORKGROUP
 EOF
 </code></pre><p>To test:</p>
-<pre><code>$ sudo mkdir -p /mnt/smb
+<pre tabindex="0"><code>$ sudo mkdir -p /mnt/smb
 $ sudo mount -a
 $ df -hT | grep cifs
 </code></pre><h3 id="repos">Repos:</h3>
@@ -245,7 +239,7 @@ $ df -hT | grep cifs
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        412 Words
+        413 Words
       </p>
 
       <p>
@@ -276,6 +270,13 @@ $ df -hT | grep cifs
 
         <div class="pagination__buttons">
             
+            <span class="button previous">
+                <a href="https://nickohristov.de/posts/search-queries/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Effective search queries</span>
+                </a>
+            </span>
+            
 
             
             <span class="button next">
@@ -302,11 +303,14 @@ $ df -hT | grep cifs
     
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&#127279; 2022</span>
+            <span>&#127279;2022</span>
+            <span><a href="https://n1ck0h21570v.onion">Tor</a></span>
             <span><a href="/gdpr/">GDPR<a></a></span>
             
             
-            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+            <span><a href="https://nickohristov.de/posts/index.xml" target="_blank" title="rss">RSS<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
             
             
         </div>
@@ -315,9 +319,9 @@ $ df -hT | grep cifs
     
     <div class="footer__inner">
         <div class="footer__content">
+		     
             <span><span class="text"></span></span>
-        </div>
-    </div>
+         </div>
     
 </footer>
 
@@ -330,7 +334,7 @@ $ df -hT | grep cifs
 
 
 
-<script type="text/javascript" src="/bundle.min.9006e041d9582fdc8c78662743d9ecdef878a052a5dcf9827796500c64d12dc4dff09f1a1c8d707135c3065d9114e8f86842f4837e5efd424833f11b9e11fc94.js" integrity="sha512-kAbgQdlYL9yMeGYnQ9ns3vh4oFKl3PmCd5ZQDGTRLcTf8J8aHI1wcTXDBl2RFOj4aEL0g35e/UJIM/EbnhH8lA=="></script>
+<script type="text/javascript" src="/bundle.min.d23700b4adce1aad57aa5afd1b861f14d38ba7784c5c1e0f1e405e0986d009f95e0bc45d462c0e4d4cc333b093a7ca401f2586edbb63b039142ce47e9e047864.js" integrity="sha512-0jcAtK3OGq1Xqlr9G4YfFNOLp3hMXB4PHkBeCYbQCfleC8RdRiwOTUzDM7CTp8pAHyWG7btjsDkULOR&#43;ngR4ZA=="></script>
 
 
 
