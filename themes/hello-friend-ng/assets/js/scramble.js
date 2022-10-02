@@ -57,7 +57,7 @@ class TextScramble {
     // Example
     
     const phrases = [
-    'PGP Fingerprint',    
+    'GPG Fingerprint',    
     'D195 AB97 7EB2 02D2 F76A A1A5 ADC4 150D 5FA1 E100',    
     ]
     
