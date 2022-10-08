@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown on Introduction</title>
+    <link>http://example.com/tags/markdown/</link>
+    <description>Recent content in markdown on Introduction</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Nov 2017 12:04:06 -0500</lastBuildDate><atom:link href="http://example.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Support</title>
+      <link>http://example.com/blog/startup-ipsum/</link>
+      <pubDate>Mon, 06 Nov 2017 12:04:06 -0500</pubDate>
+      
+      <guid>http://example.com/blog/startup-ipsum/</guid>
+      <description>Introduction supports code blocks and syntax highlighting:
+$ complicated techie code git bash ubuntu &amp;gt;&amp;gt;&amp;gt; return value init foo You can easily create tables using Markdown, with rows that support readability:
+   this is a table !     this is the 1st row   this is the 2nd row   this is the 3rd row   edgy jo ke lands here   this is the 5th row   this is the 6th row    Unordered lists render with high readabiltiy as well!</description>
+    </item>
+    
+  </channel>
+</rss>

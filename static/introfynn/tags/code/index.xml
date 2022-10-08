@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code on Introduction</title>
+    <link>http://example.com/tags/code/</link>
+    <description>Recent content in code on Introduction</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Jul 2020 02:04:06 -0500</lastBuildDate><atom:link href="http://example.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>**Start Here:** Configuration and Content</title>
+      <link>http://example.com/blog/configuration/</link>
+      <pubDate>Sat, 25 Jul 2020 02:04:06 -0500</pubDate>
+      
+      <guid>http://example.com/blog/configuration/</guid>
+      <description>Here are some helpful tips for setting up this theme.
+Configuration Most of what you&amp;rsquo;ll want to configure is demonstrated in the exampleSite config.toml. This is Hugo&amp;rsquo;s configuration file. You can copy the config.toml in the exampleSite/ to your site root get started.
+Here are all the options included in the (live!) configuration file for this example site!  baseURL = &amp;#34;http://example.com/&amp;#34; # Your domain name. Must end with &amp;#34;/&amp;#34; theme = &amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>Long Form Writing and Quotes</title>
+      <link>http://example.com/blog/long-form-post/</link>
+      <pubDate>Thu, 30 May 2019 20:18:53 -0500</pubDate>
+      
+      <guid>http://example.com/blog/long-form-post/</guid>
+      <description>Prolific writes rejoice! Introduction beautifully renders long pages of writing and blocks of quoted text. Let the ipsum show you how.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus eget nunc scelerisque viverra. Quam vulputate dignissim suspendisse in est ante in nibh mauris. Pharetra magna ac placerat vestibulum lectus mauris. Eget lorem dolor sed viverra ipsum.
+Elementum Nisi Quis eleifend quam adipiscing.</description>
+    </item>
+    
+  </channel>
+</rss>
