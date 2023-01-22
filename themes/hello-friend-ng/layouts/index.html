@@ -9,11 +9,10 @@
                <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
             {{ end }}
 
-            <h1>{{ .Site.Title }}</h1>
-            {{< rawhtml >}}
+            <h1>{{ .Site.Title }} {{< rawhtml >}}
                 <a rel="me" href="https://mastodon.social/@nel0x">Mastodon</a>
-            {{< /rawhtml >}}
-
+            {{< /rawhtml >}} </h1>
+            
             {{ partial "subtitle.html" . }}
 
             {{- with .Site.Params.social }}
