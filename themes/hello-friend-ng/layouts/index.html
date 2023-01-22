@@ -9,12 +9,13 @@
                <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
             {{ end }}
 
-            <h1>{{ .Site.Title }} {{< rawhtml >}}
-                    blabla
-            {{< /rawhtml >}} </h1>
+            <h1>{{ .Site.Title }}</h1>
             
             {{ partial "subtitle.html" . }}
 
+
+            {{ "<!-- blah blah blah //-->" | safeHtml }}
+            
             {{- with .Site.Params.social }}
                 <div>
                     {{ partial "social-icons.html" . }}
