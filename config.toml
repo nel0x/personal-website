@@ -17,7 +17,7 @@ enableEmoji  = true
   timeZone	  = "Europe/Berlin"
 
   # Subtitle for home
-  homeSubtitle = "<a rel=\"me\" href=\"https://mastodon.social/@nel0x\">Mastodon</a>A student by day, a coder by night."
+  homeSubtitle = "A student by day, a coder by night."
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
