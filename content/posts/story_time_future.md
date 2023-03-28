@@ -24,7 +24,7 @@ Oh, I must have dialed the wrong number?
 
 ---
 
-Ah, okay! They my order is...
+Ah, okay! Then my order is...
 
 ---
 
