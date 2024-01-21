@@ -1,6 +1,6 @@
 +++
 title = "Die Odyssee der Roaming-Profile: Ein Märchen von Serverhexen und Datenwäldern"
-date = "2024-01-21T19:00:00+01:00"
+date = "2024-01-20T19:00:00+01:00"
 tags  = ['story time', 'comedy', 'roaming-profiles', 'qnap']
 +++
 
