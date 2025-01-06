@@ -2,7 +2,7 @@
 title= "Sources and credits"
 +++
 
-On this page, I will explain some of the most important stuff that my site is made with. Much material and help is used, so this pages can be shown to you. I would like to thank the creators of the materials used here very much. A lot of elements are edited in order to fulfill my needs.
+On this page, I'll introduce the key frameworks and components that form the backbone of my site. Much material and help is used, so this pages can be shown to you. I would like to thank the creators of the materials used here very much. A lot of elements are edited in order to fulfill my needs.
 
 ## Material
 1. Web Framewok by [Hugo](https://gohugo.io/)
