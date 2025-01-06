@@ -1,12 +1,7 @@
 +++
-title = "Secure Authentication"
-date = "2024-04-22T16:00:00+01:00"
+title = "Enhancing VLAN Security with 802.1X, RADIUS"
+date = "2025-04-22T16:00:00+01:00"
 tags  = ['security', 'encryption', 'tech']
 +++
 
-# Passwords are old and boring
-
-# New technologies!
-passwordless authentiacation
-
-# Deep dive explanation
+Something Exciting is in the works ...
