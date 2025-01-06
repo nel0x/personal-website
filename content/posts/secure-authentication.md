@@ -1,6 +1,6 @@
 +++
 title = "Enhancing VLAN Security with 802.1X, RADIUS"
-date = "2025-04-22T16:00:00+01:00"
+date = "2025-01-04T16:00:00+01:00"
 tags  = ['security', 'encryption', 'tech']
 +++
 
