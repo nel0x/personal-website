@@ -1,6 +1,6 @@
 +++
 title = "Moderne Freiheit"
-date  = "2022-01-18T19:00:00+01:00"
+date  = "2099-01-18T19:00:00+01:00"
 tags  = ['philosophy', 'society', 'not-releated']
 +++
 ![freedom](/posts/freedom.jpg)
