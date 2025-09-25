@@ -52,7 +52,7 @@ enableEmoji  = true
 
   [[params.social]]
     name = "matrix"
-    url  = "https://matrix.to/#/@quick.silver:matrix.org"
+    url  = "https://matrix.to/#/@nel0x:matrix.org"
     
   [[params.social]]
     name = "github"
